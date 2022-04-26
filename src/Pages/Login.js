@@ -7,20 +7,19 @@ function Login() {
   const { email,
     btnLoginDisabled, setEmail, setBtnLogin } = useContext(appContext);
 
-  const handleChange = () => {
-    const number = 6;
-    const validEmail = /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/.test(email);
-
-    if (password.length > number && validEmail) {
-      setBtnLogin(false);
-    } else {
-      setBtnLogin(true);
-    }
-  };
-
   useEffect(() => {
+    const handleChange = () => {
+      const number = 6;
+      const validEmail = /^[\w+.]+@\w+\.\w{2,}(?:\.\w{2})?$/.test(email);
+
+      if (password.length > number && validEmail) {
+        setBtnLogin(false);
+      } else {
+        setBtnLogin(true);
+      }
+    };
     handleChange();
-  }, [email, password]);
+  }, [email, password, setBtnLogin]);
 
   const history = useHistory();
   const handleBtnLogin = () => {
