@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import SearchBar from './SearchBar';
 
 function Header({ title }) {
+  const [searchBarActive, setSearchBar] = useState(false);
+
   const explore = title === 'Foods' || title === 'Drinks'
     || title === 'Explore Nationalities';
 
@@ -30,10 +33,12 @@ function Header({ title }) {
           src={ searchIcon }
           alt="Search Icon"
           data-testid="search-top-btn"
+          onClick={ () => setSearchBar(!searchBarActive) }
         >
           <img src={ searchIcon } alt="Search Icon" />
         </button>
       ) }
+      { searchBarActive ? <SearchBar /> : '' }
     </header>
   );
 }
