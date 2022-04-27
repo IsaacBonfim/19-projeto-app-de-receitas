@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import appContext from '../Context/AppConText';
+import '../Styles/Login.css';
 
 function Login() {
   const [password, setPassword] = useState('');
@@ -22,6 +23,7 @@ function Login() {
   }, [email, password, setBtnLogin]);
 
   const history = useHistory();
+
   const handleBtnLogin = () => {
     localStorage.setItem('mealsToken', '1');
     localStorage.setItem('cocktailsToken', '1');
@@ -31,7 +33,7 @@ function Login() {
   };
 
   return (
-    <div>
+    <main className="main-longin-page">
       <input
         type="email"
         placeholder="Digite Email"
@@ -56,7 +58,7 @@ function Login() {
       >
         Enter
       </button>
-    </div>
+    </main>
   );
 }
 
