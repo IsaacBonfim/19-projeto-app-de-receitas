@@ -1,6 +1,28 @@
 @media screen and ( max-width : 360px ) {
 
   .header {
+    align-items: center;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
+
+  .header-container {
+    align-items: center;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    padding-bottom: 10px;
+    width: 100%;
+  }
+
+  .profile-button, .search-button {
+    background-color: white;
+    border: 1px solid transparent;
+    margin: 0 12px;
+  }
+
+  /* .header-title {
+  } */
 }
