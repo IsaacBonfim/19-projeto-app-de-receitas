@@ -6,10 +6,10 @@ import fetchApi from '../Services/FetchApi';
 function AppProvider({ children }) {
   const [email, setEmail] = useState('');
   const [btnLoginDisabled, setBtnLogin] = useState(true);
-  const [recipe, setRecipe] = useState([]);
+  const [recipes, setRecipes] = useState([]);
 
   const searchFoods = async (radio, value) => {
-    let data = '';
+    let data = [];
 
     switch (radio) {
     case 'ingredient':
@@ -28,7 +28,11 @@ function AppProvider({ children }) {
     default: data = '';
     }
 
-    setRecipe(data.meals);
+    if (data !== null && data !== undefined) {
+      global.alert('Sorry, we haven\'t found any recipes for these filters.');
+    }
+
+    setRecipes(data.meals);
   };
 
   const searchDrinks = async (radio, value) => {
@@ -51,12 +55,16 @@ function AppProvider({ children }) {
     default: data = '';
     }
 
-    setRecipe(data.drinks);
+    if (data !== null && data !== undefined) {
+      global.alert('Sorry, we haven\'t found any recipes for these filters.');
+    }
+
+    setRecipes(data.drinks);
   };
 
   const objApp = {
     email,
-    recipe,
+    recipes,
     btnLoginDisabled,
     setEmail,
     setBtnLogin,

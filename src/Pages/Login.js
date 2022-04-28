@@ -36,6 +36,7 @@ function Login() {
     <main className="main-longin-page">
       <input
         type="email"
+        className="login-input"
         placeholder="Digite Email"
         data-testid="email-input"
         name="email"
@@ -44,6 +45,7 @@ function Login() {
       />
       <input
         type="password"
+        className="login-input"
         placeholder="Digite a Senha"
         data-testid="password-input"
         name="password"
@@ -52,6 +54,7 @@ function Login() {
       />
       <button
         type="button"
+        className="login-button"
         disabled={ btnLoginDisabled }
         data-testid="login-submit-btn"
         onClick={ () => handleBtnLogin() }

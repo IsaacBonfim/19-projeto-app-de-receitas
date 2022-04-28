@@ -6,7 +6,7 @@ function SearchBar() {
   const [input, setInput] = useState('');
   const [radio, setRadio] = useState('');
 
-  const { searchFoods, searchDrinks, recipe } = useContext(appContext);
+  const { searchFoods, searchDrinks, recipes } = useContext(appContext);
 
   const history = useHistory();
   const location = useLocation().pathname;
@@ -21,9 +21,9 @@ function SearchBar() {
 
   function redirectForRecipe() {
     if (location === '/foods') {
-      history.push(`/foods/${recipe[0].idMeal}`);
+      history.push(`/foods/${recipes[0].idMeal}`);
     } else if (location === '/drinks') {
-      history.push(`/drinks/${recipe[0].idDrink}`);
+      history.push(`/drinks/${recipes[0].idDrink}`);
     }
   }
 
@@ -83,7 +83,8 @@ function SearchBar() {
         Search
       </button>
 
-      { recipe !== undefined && recipe.length === 1 ? redirectForRecipe() : '' }
+      { recipes !== undefined && recipes !== null && recipes.length === 1
+        ? redirectForRecipe() : '' }
     </div>
   );
 }
