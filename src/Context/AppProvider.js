@@ -9,7 +9,7 @@ function AppProvider({ children }) {
   const [recipe, setRecipe] = useState([]);
 
   const searchFoods = async (radio, value) => {
-    let data = [];
+    let data = '';
 
     switch (radio) {
     case 'ingredient':

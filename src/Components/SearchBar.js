@@ -1,14 +1,14 @@
 import React, { useContext, useState } from 'react';
-import { /* useHistory, */ useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import appContext from '../Context/AppConText';
 
 function SearchBar() {
   const [input, setInput] = useState('');
   const [radio, setRadio] = useState('');
 
-  const { searchFoods, searchDrinks/* , recipe */ } = useContext(appContext);
+  const { searchFoods, searchDrinks, recipe } = useContext(appContext);
 
-  // const history = useHistory();
+  const history = useHistory();
   const location = useLocation().pathname;
 
   function realizeSearch() {
@@ -17,12 +17,14 @@ function SearchBar() {
     } else if (location === '/drinks') {
       searchDrinks(radio, input);
     }
+  }
 
-    // if (location === '/foods' && recipe.length === 1) {
-    //   history.push(`/foods/${recipe[0].idMeal}`);
-    // } else if (location === '/drinks' && recipe.length === 1) {
-    //   history.push(`/drinks/${recipe[0].idDrink}`);
-    // }
+  function redirectForRecipe() {
+    if (location === '/foods') {
+      history.push(`/foods/${recipe[0].idMeal}`);
+    } else if (location === '/drinks') {
+      history.push(`/drinks/${recipe[0].idDrink}`);
+    }
   }
 
   return (
@@ -81,13 +83,7 @@ function SearchBar() {
         Search
       </button>
 
-      {/* { location === '/foods' && recipe.length === 1
-        ? history.push(`/foods/${recipe[0].idMeal}`)
-        : '' }
-
-      { location === '/drinks' && recipe.length === 1
-        ? history.push(`/drinks/${recipe[0].idDrink}`)
-        : '' } */}
+      { recipe !== undefined && recipe.length === 1 ? redirectForRecipe() : '' }
     </div>
   );
 }
