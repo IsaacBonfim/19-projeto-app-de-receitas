@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import appContext from '../Context/AppConText';
 import Header from '../Components/Header';
 import RecipeCard from '../Components/RecipeCard';
+import Footer from '../Components/Footer';
 
 function Food() {
   const { recipes } = useContext(appContext);
@@ -22,6 +23,7 @@ function Food() {
           )).slice(0, doze))
           : '' }
       </section>
+      <Footer />
     </main>
   );
 }
