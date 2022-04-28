@@ -3,10 +3,10 @@ import Header from '../Components/Header';
 
 function ExploreFoodIngred() {
   return (
-    <div>
+    <main>
       <Header title="Explore Ingredients" />
       <h1>Explorar Ingredientes de Comidas</h1>
-    </div>
+    </main>
   );
 }
 

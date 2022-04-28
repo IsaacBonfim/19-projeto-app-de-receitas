@@ -14,7 +14,7 @@ function Header({ title }) {
   const history = useHistory();
 
   return (
-    <header>
+    <header className="header">
       <button
         type="button"
         src={ profileIcon }

@@ -22,8 +22,8 @@ function Routes() {
     <Switch>
       <Route exact path="/foods" component={ Food } />
       <Route exact path="/drinks" component={ Drink } />
-      <Route exact path="/foods/{id-da-receita}" component={ FoodDetails } />
-      <Route exact path="/drinks/{id-da-receita}" component={ DrinkDetails } />
+      <Route exact path="/foods/:id" component={ FoodDetails } />
+      <Route exact path="/drinks/:id" component={ DrinkDetails } />
       <Route exact path="/foods/{id-da-receita}/in-progress" component={ FoodProgress } />
       <Route
         exact

@@ -3,10 +3,10 @@ import Header from '../Components/Header';
 
 function Explore() {
   return (
-    <div>
+    <main>
       <Header title="Explore" />
       <h1>Explorar</h1>
-    </div>
+    </main>
   );
 }
 

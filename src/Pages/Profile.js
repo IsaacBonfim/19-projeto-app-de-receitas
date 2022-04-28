@@ -3,10 +3,10 @@ import Header from '../Components/Header';
 
 function Profile() {
   return (
-    <div>
+    <main>
       <Header title="Profile" />
       <h1>Perfil</h1>
-    </div>
+    </main>
   );
 }
 
