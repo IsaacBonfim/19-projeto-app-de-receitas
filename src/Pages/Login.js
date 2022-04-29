@@ -33,7 +33,7 @@ function Login() {
   };
 
   return (
-    <main className="main-longin-page">
+    <div className="container-longin-page">
       <input
         type="email"
         className="login-input"
@@ -61,7 +61,7 @@ function Login() {
       >
         Enter
       </button>
-    </main>
+    </div>
   );
 }
 

@@ -41,7 +41,7 @@ function AppProvider({ children }) {
     default: data = '';
     }
 
-    if (data !== null && data !== undefined) {
+    if (data.meals === null) {
       global.alert('Sorry, we haven\'t found any recipes for these filters.');
     }
 
@@ -49,7 +49,7 @@ function AppProvider({ children }) {
   };
 
   const searchDrinks = async (radio, value) => {
-    let data = '';
+    let data = [];
 
     switch (radio) {
     case 'ingredient':
@@ -68,7 +68,7 @@ function AppProvider({ children }) {
     default: data = '';
     }
 
-    if (data !== null && data !== undefined) {
+    if (data.drinks === null) {
       global.alert('Sorry, we haven\'t found any recipes for these filters.');
     }
 

@@ -28,16 +28,17 @@ function SearchBar() {
   }
 
   return (
-    <div>
+    <div className="search-container">
       <input
         type="text"
+        className="search-input"
         value={ input }
         data-testid="search-input"
         placeholder="Busca"
         onChange={ ({ target }) => setInput(target.value) }
       />
 
-      <div>
+      <div className="radio-container">
         <label htmlFor="ingredient">
           <input
             id="ingredient"
@@ -77,6 +78,7 @@ function SearchBar() {
 
       <button
         type="button"
+        className="search-bar-button"
         data-testid="exec-search-btn"
         onClick={ realizeSearch }
       >

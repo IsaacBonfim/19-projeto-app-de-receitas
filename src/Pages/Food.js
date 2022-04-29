@@ -16,7 +16,7 @@ function Food() {
   }, []);
 
   return (
-    <main>
+    <>
       <Header title="Foods" />
       {
         category.map((item) => (
@@ -29,6 +29,8 @@ function Food() {
         )).slice(0, cinco)
       }
       <section>
+
+      <section className="main-section">
         { recipes !== undefined && recipes !== null && recipes.length > 0 ? (
           recipes.map((recipe, index) => (
             <RecipeCard
@@ -41,7 +43,7 @@ function Food() {
           : '' }
       </section>
       <Footer />
-    </main>
+    </>
   );
 }
 

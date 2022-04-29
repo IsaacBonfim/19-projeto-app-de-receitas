@@ -5,9 +5,9 @@ import './Styles/Header.css';
 
 function App() {
   return (
-    <div data-testid="routes">
+    <main data-testid="routes">
       <Routes />
-    </div>
+    </main>
   );
 }
 
