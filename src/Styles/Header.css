@@ -2,9 +2,14 @@
 
   .header {
     align-items: center;
+    background-color: white;
     display: flex;
     flex-wrap: wrap;
+    height: 12vh;
     justify-content: space-around;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
   }
 
   .header-container {
@@ -12,7 +17,7 @@
     border-bottom: 1px solid black;
     display: flex;
     justify-content: space-between;
-    margin: 15px 0;
+    margin-top: 15px;
     padding-bottom: 10px;
     width: 100%;
   }
@@ -20,9 +25,44 @@
   .profile-button, .search-button {
     background-color: white;
     border: 1px solid transparent;
+    font-size: 35px;
     margin: 0 12px;
   }
 
-  /* .header-title {
-  } */
+  .ghost {
+    width: 60.5px;
+  }
+
+  .search-container {
+    align-items: center;
+    background-color: white;
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .search-input {
+    border: 2px solid lightblue;
+    border-radius: 8px;
+    font-size: 18px;
+    margin: 10px 8px 4px;
+    padding: 4px 8px;
+  }
+
+  .radio-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 8px 16px;
+    width: 100%;
+  }
+
+  .search-bar-button {
+    background-color: rgba(220, 235, 255, 1);
+    border: 1px solid transparent;
+    font-size: 18px;
+    margin: 10px 10px 16px;
+    padding: 4px 8px;
+    width: 100px;
+  }
 }

@@ -11,7 +11,7 @@ function Footer() {
   const history = useHistory();
 
   return (
-    <footer data-testid="footer" className="fixarRodape">
+    <footer data-testid="footer" className="footer">
       <button
         type="button"
         data-testid="drinks-bottom-btn"
@@ -19,7 +19,8 @@ function Footer() {
         alt="Drink Icon"
         onClick={ () => history.push('/drinks') }
       >
-        <img src={ drinkIcon } alt="Drink Icon" />
+        <ion-icon name="wine-sharp" />
+        {/* <img src={ drinkIcon } alt="Drink Icon" /> */}
       </button>
 
       <button
@@ -29,7 +30,8 @@ function Footer() {
         alt="Explore Icon"
         onClick={ () => history.push('/explore') }
       >
-        <img src={ exploreIcon } alt="Explore Icon" />
+        <ion-icon name="globe-outline" />
+        {/* <img src={ exploreIcon } alt="Explore Icon" /> */}
       </button>
 
       <button
@@ -39,7 +41,8 @@ function Footer() {
         alt="Meal Icon"
         onClick={ () => history.push('/foods') }
       >
-        <img src={ mealIcon } alt="Meal Icon" />
+        <ion-icon name="restaurant-outline" />
+        {/* <img src={ mealIcon } alt="Meal Icon" /> */}
       </button>
     </footer>
   );

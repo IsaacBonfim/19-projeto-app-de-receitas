@@ -24,23 +24,27 @@ function Header({ title }) {
           data-testid="profile-top-btn"
           onClick={ () => history.push('/profile') }
         >
-          <img src={ profileIcon } alt="Profile Icon" />
+          <ion-icon name="person-outline" />
+          {/* <img src={ profileIcon } alt="Profile Icon" /> */}
         </button>
 
         <h1 className="header-title" data-testid="page-title">{ title }</h1>
 
-        { !explore ? '' : (
-          <button
-            type="button"
-            className="search-button"
-            src={ searchIcon }
-            alt="Search Icon"
-            data-testid="search-top-btn"
-            onClick={ () => setSearchBar(!searchBarActive) }
-          >
-            <img src={ searchIcon } alt="Search Icon" />
-          </button>
-        ) }
+        <div className="ghost">
+          { !explore ? '' : (
+            <button
+              type="button"
+              className="search-button"
+              src={ searchIcon }
+              alt="Search Icon"
+              data-testid="search-top-btn"
+              onClick={ () => setSearchBar(!searchBarActive) }
+            >
+              <ion-icon name="search-sharp" />
+              {/* <img src={ searchIcon } alt="Search Icon" /> */}
+            </button>
+          ) }
+        </div>
       </section>
       { searchBarActive ? <SearchBar /> : '' }
     </header>
