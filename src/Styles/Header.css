@@ -12,6 +12,14 @@
     z-index: 1;
   }
 
+  .nav-bar {
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 75px;
+    width: 350px;
+  }
+
   .header-container {
     align-items: center;
     border-bottom: 1px solid black;
