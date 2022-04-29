@@ -1,4 +1,4 @@
-/* @media screen and ( max-width : 360px ) {
+@media screen and ( max-width : 360px ) {
 
   .header {
     align-items: center;
@@ -65,4 +65,4 @@
     padding: 4px 8px;
     width: 100px;
   }
-} */
+}

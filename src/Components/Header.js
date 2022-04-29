@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import { BsPerson } from 'react-icons/bs';
+import { ImSearch } from 'react-icons/im';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
@@ -24,8 +26,9 @@ function Header({ title }) {
           data-testid="profile-top-btn"
           onClick={ () => history.push('/profile') }
         >
-          <ion-icon name="person-outline" />
+          {/* <ion-icon name="person-outline" /> */}
           {/* <img src={ profileIcon } alt="Profile Icon" /> */}
+          <BsPerson />
         </button>
 
         <h1 className="header-title" data-testid="page-title">{ title }</h1>
@@ -40,8 +43,9 @@ function Header({ title }) {
               data-testid="search-top-btn"
               onClick={ () => setSearchBar(!searchBarActive) }
             >
-              <ion-icon name="search-sharp" />
+              {/* <ion-icon name="search-sharp" /> */}
               {/* <img src={ searchIcon } alt="Search Icon" /> */}
+              <ImSearch />
             </button>
           ) }
         </div>
