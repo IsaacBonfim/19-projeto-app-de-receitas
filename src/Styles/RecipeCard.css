@@ -1,0 +1,36 @@
+@media screen and ( max-width : 360px ) {
+
+  .main-section {
+    bottom: 70px;
+    display: flex;
+    flex-flow: row wrap;
+    overflow: scroll;
+    position: absolute;
+    top: 70px;
+  }
+
+  .recipe-card {
+    border: 1px solid lightblue;
+    border-radius: 12px;
+    color: white;
+    font-size: 10px;
+    height: 160px;
+    margin: 8px 5px;
+    padding: 4px 5px;
+    transition: all 0.5s ease;
+    width: 168px;
+  }
+
+  .recipe-card:hover {
+    color: black;
+    font-size: 18px;
+    font-weight: 800;
+    height: 200px;
+  }
+
+  .recipe-img {
+    border-radius: 12px;
+    height: 150px;
+    width: 100%;
+  }
+}

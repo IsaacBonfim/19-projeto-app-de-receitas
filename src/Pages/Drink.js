@@ -11,7 +11,7 @@ function Drink() {
   return (
     <main>
       <Header title="Drinks" />
-      <section>
+      <section className="main-section">
         { recipes !== undefined && recipes !== null && recipes.length > 0 ? (
           recipes.map((recipe, index) => (
             <RecipeCard
