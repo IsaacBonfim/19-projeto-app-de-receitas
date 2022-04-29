@@ -5,7 +5,9 @@ import './Styles/Header.css';
 
 function App() {
   return (
-    <Routes />
+    <div data-testid="routes">
+      <Routes />
+    </div>
   );
 }
 
