@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import appContext from '../Context/AppConText';
 import { BiDrink } from 'react-icons/bi';
 import { IoRestaurantOutline } from 'react-icons/io5';
 import { MdTravelExplore } from 'react-icons/md';
+import appContext from '../Context/AppConText';
 import drinkIcon from '../images/drinkIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';

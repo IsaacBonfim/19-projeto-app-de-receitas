@@ -18,17 +18,18 @@ function Drink() {
   return (
     <>
       <Header title="Drinks" />
-      {
-        category.map((item) => (
-          <Nav
-            key={ item.strCategory }
-            categoriesName={ item.strCategory }
-            page="thecocktaildb"
-            tipo="drinks"
-          />
-        )).slice(0, cinco)
-      }
-      <section>
+      <section className="nav-bar">
+        {
+          category.map((item) => (
+            <Nav
+              key={ item.strCategory }
+              categoriesName={ item.strCategory }
+              page="thecocktaildb"
+              tipo="drinks"
+            />
+          )).slice(0, cinco)
+        }
+      </section>
 
       <section className="main-section">
         { recipes !== undefined && recipes !== null && recipes.length > 0 ? (

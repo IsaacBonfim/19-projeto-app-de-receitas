@@ -18,17 +18,18 @@ function Food() {
   return (
     <>
       <Header title="Foods" />
-      {
-        category.map((item) => (
-          <Nav
-            key={ item.strCategory }
-            categoriesName={ item.strCategory }
-            page="themealdb"
-            tipo="meals"
-          />
-        )).slice(0, cinco)
-      }
-      <section>
+      <section className="nav-bar">
+        {
+          category.map((item) => (
+            <Nav
+              key={ item.strCategory }
+              categoriesName={ item.strCategory }
+              page="themealdb"
+              tipo="meals"
+            />
+          )).slice(0, cinco)
+        }
+      </section>
 
       <section className="main-section">
         { recipes !== undefined && recipes !== null && recipes.length > 0 ? (
