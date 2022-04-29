@@ -4,7 +4,9 @@ import './Styles/App.css';
 
 function App() {
   return (
-    <Routes />
+    <div data-testid="routes">
+      <Routes />
+    </div>
   );
 }
 

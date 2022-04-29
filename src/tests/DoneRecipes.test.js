@@ -1,0 +1,25 @@
+import React from 'react';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import renderWithRouter from './renderWithRouter';
+import DoneRecipe from '../Pages/DoneRecipe';
+
+describe('Testa o componente "DoneRecipes" ', () => {
+  it('Verifica se o componente "DoneRecipes" foi renderizado corretamente', () => {
+    renderWithRouter(<DoneRecipe />);
+    const title1 = screen.getByRole('heading', { name: /done recipes/i });
+    const title2 = screen.getByRole('heading', { name: /receitas feitas/i });
+    const profileIcon = screen.getByRole('img', { name: /profile icon/i });
+    expect(profileIcon).toBeInTheDocument();
+    expect(title1).toBeInTheDocument();
+    expect(title2).toBeInTheDocument();
+  });
+  it('Testa se ao clicar no botão de profile, redireciona para a página de profile',
+    () => {
+      const { history } = renderWithRouter(<DoneRecipe />);
+      const profileBtn = screen.getByRole('img', { name: /profile icon/i });
+      userEvent.click(profileBtn);
+      const { location: { pathname } } = history;
+      expect(pathname).toBe('/profile');
+    });
+});
