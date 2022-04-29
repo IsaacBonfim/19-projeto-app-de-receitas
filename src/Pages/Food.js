@@ -9,9 +9,9 @@ function Food() {
   const doze = 12;
 
   return (
-    <main>
+    <>
       <Header title="Foods" />
-      <section>
+      <section className="main-section">
         { recipes !== undefined && recipes !== null && recipes.length > 0 ? (
           recipes.map((recipe, index) => (
             <RecipeCard
@@ -24,7 +24,7 @@ function Food() {
           : '' }
       </section>
       <Footer />
-    </main>
+    </>
   );
 }
 

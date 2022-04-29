@@ -1,6 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-
+import { BiDrink } from 'react-icons/bi';
+import { IoRestaurantOutline } from 'react-icons/io5';
+import { MdTravelExplore } from 'react-icons/md';
 import drinkIcon from '../images/drinkIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
@@ -11,7 +13,7 @@ function Footer() {
   const history = useHistory();
 
   return (
-    <footer data-testid="footer" className="fixarRodape">
+    <footer data-testid="footer" className="footer">
       <button
         type="button"
         data-testid="drinks-bottom-btn"
@@ -19,7 +21,9 @@ function Footer() {
         alt="Drink Icon"
         onClick={ () => history.push('/drinks') }
       >
-        <img src={ drinkIcon } alt="Drink Icon" />
+        {/* <ion-icon name="wine-sharp" /> */}
+        {/* <img src={ drinkIcon } alt="Drink Icon" /> */}
+        <BiDrink />
       </button>
 
       <button
@@ -29,7 +33,9 @@ function Footer() {
         alt="Explore Icon"
         onClick={ () => history.push('/explore') }
       >
-        <img src={ exploreIcon } alt="Explore Icon" />
+        {/* <ion-icon name="globe-outline" /> */}
+        {/* <img src={ exploreIcon } alt="Explore Icon" /> */}
+        <MdTravelExplore />
       </button>
 
       <button
@@ -39,7 +45,9 @@ function Footer() {
         alt="Meal Icon"
         onClick={ () => history.push('/foods') }
       >
-        <img src={ mealIcon } alt="Meal Icon" />
+        {/* <ion-icon name="restaurant-outline" /> */}
+        {/* <img src={ mealIcon } alt="Meal Icon" /> */}
+        <IoRestaurantOutline />
       </button>
     </footer>
   );
