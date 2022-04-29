@@ -5,7 +5,10 @@ export const sendLocalStorage = (obj) => {
 };
 
 export const getLocalStorage = () => {
-
+  const email = localStorage.getItem('user');
+  const mealsToken = localStorage.getItem('mealsToken');
+  const cocktailsToken = localStorage.getItem('cocktailsToken');
+  return { email, mealsToken, cocktailsToken };
 };
 
 // function insertPhraseInDOM() {
