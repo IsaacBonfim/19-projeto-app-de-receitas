@@ -1,11 +1,12 @@
 @media screen and ( max-width : 360px ) {
 
-  .main-longin-page {
+  .container-longin-page {
     align-items: center;
     align-self: center;
     display: flex;
     flex-direction: column;
-    height: 20vh;
+    height: 100vh;
+    justify-content: center;
   }
 
   .login-input {

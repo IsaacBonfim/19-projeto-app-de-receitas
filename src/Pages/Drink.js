@@ -9,7 +9,7 @@ function Drink() {
   const doze = 12;
 
   return (
-    <main>
+    <>
       <Header title="Drinks" />
       <section className="main-section">
         { recipes !== undefined && recipes !== null && recipes.length > 0 ? (
@@ -24,7 +24,7 @@ function Drink() {
           : '' }
       </section>
       <Footer />
-    </main>
+    </>
   );
 }
 
