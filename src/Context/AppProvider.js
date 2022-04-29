@@ -7,6 +7,19 @@ function AppProvider({ children }) {
   const [email, setEmail] = useState('');
   const [btnLoginDisabled, setBtnLogin] = useState(true);
   const [recipes, setRecipes] = useState([]);
+  const [category, setCategory] = useState([]);
+
+  const initialRequest = async (url, key) => {
+    const data = await fetchApi(url);
+    console.log(data[key]);
+    setRecipes(data[key]);
+  };
+
+  const categories = async (url, key) => {
+    const data = await fetchApi(url);
+    console.log(data[key]);
+    setCategory(data[key]);
+  };
 
   const searchFoods = async (radio, value) => {
     let data = [];
@@ -66,10 +79,15 @@ function AppProvider({ children }) {
     email,
     recipes,
     btnLoginDisabled,
+    category,
     setEmail,
     setBtnLogin,
     searchFoods,
     searchDrinks,
+    initialRequest,
+    setCategory,
+    categories,
+    setRecipes,
   };
 
   return (
