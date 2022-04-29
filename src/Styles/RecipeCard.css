@@ -6,7 +6,7 @@
     flex-flow: row wrap;
     overflow: scroll;
     position: absolute;
-    top: 130px;
+    top: 140px;
   }
 
   .recipe-card {

@@ -14,15 +14,14 @@ function Nav({ categoriesName, page, tipo }) {
   };
 
   return (
-    <div>
-      <button
-        type="button"
-        data-testid={ `${categoriesName}-category-filter` }
-        onClick={ () => btnCategory(categoriesName) }
-      >
-        { categoriesName }
-      </button>
-    </div>
+    <button
+      type="button"
+      className="nav-button"
+      data-testid={ `${categoriesName}-category-filter` }
+      onClick={ () => btnCategory(categoriesName) }
+    >
+      { categoriesName }
+    </button>
   );
 }
 
