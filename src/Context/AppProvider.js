@@ -75,6 +75,12 @@ function AppProvider({ children }) {
     setRecipes(data.drinks);
   };
 
+  const detailsRequest = async (url, key) => {
+    console.log(url, key);
+    const data = await fetchApi(`https://www.${url}.com/api/json/v1/1/lookup.php?i=${key}`);
+    return data;
+  };
+
   const objApp = {
     email,
     recipes,
@@ -88,6 +94,7 @@ function AppProvider({ children }) {
     setCategory,
     categories,
     setRecipes,
+    detailsRequest,
   };
 
   return (

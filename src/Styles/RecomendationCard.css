@@ -10,24 +10,18 @@
     top: 150px;
   }
 
-  .recipe-card {
+  .recomendation-card {
     border: 1px solid lightblue;
     border-radius: 12px;
-    color: white;
     flex-grow: 1;
-    font-size: 10px;
-    height: 180px;
+    font-size: 16px;
+    font-weight: 800;
+    height: fit-content;
     margin: 8px 5px;
     padding: 4px 5px;
+    text-align: center;
     transition: all 0.5s ease;
     width: 180px;
-  }
-
-  .recipe-card:hover {
-    color: black;
-    font-size: 18px;
-    font-weight: 800;
-    height: 220px;
   }
 
   .recipe-img {

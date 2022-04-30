@@ -1,0 +1,13 @@
+@media screen and ( max-width : 360px ) {
+
+  .datails-img {
+    height: 40vh;
+    width: 100%;
+  }
+
+  .recomendation-section {
+    display: flex;
+    height: fit-content;
+    overflow: scroll;
+  }
+}
