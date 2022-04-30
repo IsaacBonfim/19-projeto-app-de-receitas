@@ -29,6 +29,15 @@ function Food() {
             />
           )).slice(0, cinco)
         }
+        <button
+          type="button"
+          className="nav-button"
+          data-testid="All-category-filter"
+          onClick={ () => (initialRequest('https://www.themealdb.com/api/json/v1/1/search.php?s=', 'meals')) }
+        >
+          All
+        </button>
+
       </nav>
 
       <section className="main-section">

@@ -29,6 +29,14 @@ function Drink() {
             />
           )).slice(0, cinco)
         }
+        <button
+          type="button"
+          className="nav-button"
+          data-testid="All-category-filter"
+          onClick={ () => (initialRequest('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=', 'drinks')) }
+        >
+          All
+        </button>
       </nav>
 
       <section className="main-section">
