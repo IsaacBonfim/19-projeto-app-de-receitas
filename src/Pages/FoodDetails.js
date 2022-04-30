@@ -64,7 +64,7 @@ function FoodDetails() {
         data-testid="recipe-photo"
       />
 
-      <section>
+      <section className="details-title-section">
         <h2 data-testid="recipe-title">{ details.strMeal }</h2>
 
         <div>
@@ -86,7 +86,7 @@ function FoodDetails() {
         <span data-testid="recipe-category">{ details.strCategory }</span>
       </section>
 
-      <section>
+      <section className="details-ingredients-section">
         <h2>Ingredientes</h2>
         <ul>
           { ingredientList.map((ingredient, index) => (
@@ -100,7 +100,7 @@ function FoodDetails() {
         </ul>
       </section>
 
-      <section>
+      <section className="details-description-section">
         <h2>Instruções</h2>
         <p data-testid="instructions">{ details.strInstructions }</p>
       </section>
@@ -114,9 +114,7 @@ function FoodDetails() {
       </section>
 
       <h2>Recomendações</h2>
-      <section
-        className="recomendation-section"
-      >
+      <section className="recomendation-section">
         { recomendations.map((recomendation, index) => (
           <div
             key={ index }
@@ -133,12 +131,17 @@ function FoodDetails() {
         )) }
       </section>
 
-      <button
-        type="button"
-        data-testid="start-recipe-btn"
-      >
-        Iniciar Receita
-      </button>
+      <div className="teste">teste</div>
+
+      <section className="start-section">
+        <button
+          type="button"
+          className="start-btn"
+          data-testid="start-recipe-btn"
+        >
+          Start Recipe
+        </button>
+      </section>
     </>
   );
 }

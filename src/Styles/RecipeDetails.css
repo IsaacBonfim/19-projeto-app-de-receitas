@@ -5,9 +5,56 @@
     width: 100%;
   }
 
+  .details-title-section {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+    position: relative;
+    width: 100%;
+  }
+
+  .details-ingredients-section {
+    margin: 8px 0;
+    position: relative;
+  }
+
+  .details-description-section {
+    margin: 8px 0;
+    position: relative;
+  }
+
   .recomendation-section {
     display: flex;
     height: fit-content;
     overflow: scroll;
+  }
+
+  .teste {
+    color: white;
+    height: 50px;
+  }
+
+  .start-section {
+    align-items: center;
+    background-color: white;
+    border-top: 1px solid black;
+    bottom: 40px;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+  }
+
+  .start-btn {
+    border: 4px outset lightblue;
+    bottom: 0;
+    font-size: 20px;
+    font-weight: 800;
+    margin: 0 1px;
+    padding: 8px;
+    position: fixed;
+    width: 100%;
   }
 }

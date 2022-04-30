@@ -64,7 +64,7 @@ function DrinkDetails() {
         data-testid="recipe-photo"
       />
 
-      <section>
+      <section className="details-title-section">
         <h2 data-testid="recipe-title">{ details.strDrink }</h2>
 
         <div>
@@ -106,9 +106,7 @@ function DrinkDetails() {
       </section>
 
       <h2>Recomendações</h2>
-      <section
-        className="recomendation-section"
-      >
+      <section className="recomendation-section">
         { recomendations.map((recomendation, index) => (
           <div
             key={ index }
@@ -125,12 +123,17 @@ function DrinkDetails() {
         )) }
       </section>
 
-      <button
-        type="button"
-        data-testid="start-recipe-btn"
-      >
-        Iniciar Receita
-      </button>
+      <div className="teste">teste</div>
+
+      <section className="start-section">
+        <button
+          type="button"
+          className="start-btn"
+          data-testid="start-recipe-btn"
+        >
+          Start Recipe
+        </button>
+      </section>
     </>
   );
 }
