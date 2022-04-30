@@ -10,8 +10,6 @@ describe('Testa o componente Drink', () => {
     const profileBtn = screen.getByRole('img', { name: /profile icon/i });
     const searchBtn = screen.getByRole('img', { name: /search icon/i });
     const drinkText = screen.getByRole('heading', { name: /drinks/i });
-    const principalText = screen.getByRole('heading', { name: /página de bebidas/i });
-    expect(principalText).toBeInTheDocument();
     expect(searchBtn).toBeInTheDocument();
     expect(drinkText).toBeInTheDocument();
     expect(profileBtn).toBeInTheDocument();
