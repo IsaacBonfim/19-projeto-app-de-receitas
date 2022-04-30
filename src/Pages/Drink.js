@@ -1,21 +1,51 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import appContext from '../Context/AppConText';
 import Header from '../Components/Header';
+import Nav from '../Components/Nav';
 import RecipeCard from '../Components/RecipeCard';
 import Footer from '../Components/Footer';
 
 function Drink() {
-  const { recipes } = useContext(appContext);
+  const { recipes, initialRequest, categories, category } = useContext(appContext);
   const doze = 12;
+  const cinco = 5;
+
+  useEffect(() => {
+    initialRequest('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=', 'drinks');
+    categories('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list', 'drinks');
+  }, []);
 
   return (
     <>
       <Header title="Drinks" />
+      <nav className="nav-bar">
+        {
+          category.map((item) => (
+            <Nav
+              key={ item.strCategory }
+              categoriesName={ item.strCategory }
+              page="thecocktaildb"
+              tipo="drinks"
+            />
+          )).slice(0, cinco)
+        }
+        <button
+          type="button"
+          className="nav-button"
+          data-testid="All-category-filter"
+          onClick={ () => (initialRequest('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=', 'drinks')) }
+        >
+          All
+        </button>
+      </nav>
+
       <section className="main-section">
         { recipes !== undefined && recipes !== null && recipes.length > 0 ? (
           recipes.map((recipe, index) => (
             <RecipeCard
-              key={ recipe.idDrink }
+              key={ index }
+              link="/drinks/"
+              recipeId={ recipe.idDrink }
               recipeName={ recipe.strDrink }
               recipeImg={ recipe.strDrinkThumb }
               index={ index }
