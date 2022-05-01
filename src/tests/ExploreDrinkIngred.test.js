@@ -15,7 +15,7 @@ describe('Testa o componente "ExploreDrinkIngred" ', () => {
   it('Testa se ao clicar no botão de profile, redireciona para a página de profile',
     () => {
       const { history } = renderWithRouter(<ExploreDrinkIngred />);
-      const profileBtn = screen.getByRole('img', { name: /profile icon/i });
+      const profileBtn = screen.getByTestId('profile-top-btn');
       userEvent.click(profileBtn);
       const { location: { pathname } } = history;
       expect(pathname).toBe('/profile');

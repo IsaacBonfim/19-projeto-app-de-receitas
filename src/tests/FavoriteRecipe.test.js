@@ -9,7 +9,7 @@ describe('Testa o componente "FavoriteRecipe"', () => {
     renderWithRouter(<FavoriteRecipe />);
     const title = screen.getByRole('heading', { name: /favorite recipes/i });
     const title2 = screen.getByRole('heading', { name: /Receitas Favoritas/i });
-    const profileIcon = screen.getByRole('img', { name: /profile icon/i });
+    const profileIcon = screen.getByTestId('profile-top-btn');
     expect(title).toBeInTheDocument();
     expect(title2).toBeInTheDocument();
     expect(profileIcon).toBeInTheDocument();
@@ -17,7 +17,7 @@ describe('Testa o componente "FavoriteRecipe"', () => {
   it('Testa se ao clicar no botão de profile, redireciona para a página de profile',
     () => {
       const { history } = renderWithRouter(<FavoriteRecipe />);
-      const profileBtn = screen.getByRole('img', { name: /profile icon/i });
+      const profileBtn = screen.getByTestId('profile-top-btn');
       userEvent.click(profileBtn);
       const { location: { pathname } } = history;
       expect(pathname).toBe('/profile');

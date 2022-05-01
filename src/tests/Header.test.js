@@ -4,11 +4,14 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import Header from '../Components/Header';
 
+const SEARCH_BTN = 'search-top-btn';
+const PROFILE_ICON = 'profile-top-btn';
+
 describe('Testa o componente Header', () => {
   it('Testa se o componente Header renderiza corretamente', () => {
     renderWithRouter(<Header title="Foods" />);
-    const profileIcon = screen.getByRole('img', { name: /profile icon/i });
-    const searchIcon = screen.getByRole('img', { name: /search icon/i });
+    const profileIcon = screen.getByTestId(PROFILE_ICON);
+    const searchIcon = screen.getByTestId(SEARCH_BTN);
     const title = screen.getByRole('heading', { name: /foods/i });
     expect(profileIcon).toBeInTheDocument();
     expect(searchIcon).toBeInTheDocument();
@@ -20,18 +23,10 @@ describe('Testa o componente Header', () => {
     expect(title2).toBeInTheDocument();
   });
 
-  it('Testa "SRC dos elementos img', () => {
-    renderWithRouter(<Header title="Foods" />);
-    const profileIcon = screen.getByRole('img', { name: /profile icon/i });
-    const searchIcon = screen.getByRole('img', { name: /search icon/i });
-    expect(profileIcon.src).toBe('http://localhost/profileIcon.svg');
-    expect(searchIcon.src).toBe('http://localhost/searchIcon.svg');
-  });
-
   it('Testa se ao clicar no botão de profile, redireciona para a página de profile',
     () => {
       const { history } = renderWithRouter(<Header title="Foods" />);
-      const profileBtn = screen.getByRole('img', { name: /profile icon/i });
+      const profileBtn = screen.getByTestId(PROFILE_ICON);
       userEvent.click(profileBtn);
       const { location: { pathname } } = history;
       expect(pathname).toBe('/profile');
@@ -45,7 +40,7 @@ describe('Testa o componente Header', () => {
 
   it('Testa se ao clicar no botão de search, aparece o input', () => {
     renderWithRouter(<Header title="Foods" />);
-    const searchBtn = screen.getByRole('img', { name: /search icon/i });
+    const searchBtn = screen.getByTestId(SEARCH_BTN);
     userEvent.click(searchBtn);
     const searchInput = screen.getByTestId('search-input');
     expect(searchInput).toBeInTheDocument();
@@ -53,7 +48,7 @@ describe('Testa o componente Header', () => {
 
   it('Testa se ao clicar duas vezes no botão de search ele fica escondido', () => {
     renderWithRouter(<Header title="Foods" />);
-    const searchBtn = screen.getByRole('img', { name: /search icon/i });
+    const searchBtn = screen.getByTestId(SEARCH_BTN);
     userEvent.click(searchBtn);
     userEvent.click(searchBtn);
     const input = screen.queryByRole('textbox');
