@@ -26,8 +26,6 @@ function Header({ title }) {
           data-testid="profile-top-btn"
           onClick={ () => history.push('/profile') }
         >
-          {/* <ion-icon name="person-outline" /> */}
-          {/* <img src={ profileIcon } alt="Profile Icon" /> */}
           <BsPerson />
         </button>
 
@@ -43,8 +41,6 @@ function Header({ title }) {
               data-testid="search-top-btn"
               onClick={ () => setSearchBar(!searchBarActive) }
             >
-              {/* <ion-icon name="search-sharp" /> */}
-              {/* <img src={ searchIcon } alt="Search Icon" /> */}
               <ImSearch />
             </button>
           ) }
