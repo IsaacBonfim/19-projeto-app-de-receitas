@@ -1,9 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { BsShare, BsHeart } from 'react-icons/bs';
+import { FcLike } from 'react-icons/fc';
 import appContext from '../Context/AppConText';
 import RecomendationCard from '../Components/RecomendationCard';
 import fetchApi from '../Services/FetchApi';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
 import '../Styles/RecipeDetails.css';
 
 function FoodDetails() {
@@ -14,10 +17,13 @@ function FoodDetails() {
   const [recomendations, setRecomendations] = useState([]);
   const [doneRecipes, setDoneRecipes] = useState([]);
   const [recipeInProgress, setRecipeInProgress] = useState([]);
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
 
   const history = useHistory();
   const location = useLocation().pathname;
   const id = location.split('/')[2];
+
+  const [isCopied, setCopied] = useState(false);
 
   const getDoneRecipe = () => {
     if (localStorage.getItem('doneRecipes')) {
@@ -36,6 +42,16 @@ function FoodDetails() {
       const recipes = aux.meals;
 
       setRecipeInProgress(recipes);
+    }
+  };
+
+  const getFavoriteRecipes = () => {
+    if (localStorage.getItem('favoriteRecipes')) {
+      let aux = localStorage.getItem('favoriteRecipes');
+      aux = JSON.parse(aux);
+      const ids = aux.map((recipe) => recipe.id);
+
+      setFavoriteRecipes(ids);
     }
   };
 
@@ -77,11 +93,16 @@ function FoodDetails() {
     getDoneRecipe();
 
     getRecipeInProgress();
+
+    getFavoriteRecipes();
   }, [detailsRequest, id]);
 
   const btnStartRecipe = () => {
     history.push(`/foods/${id}/in-progress`);
   };
+
+  const src = favoriteRecipes
+    .some((recipe) => recipe === id) ? blackHeartIcon : whiteHeartIcon;
 
   return (
     <>
@@ -96,9 +117,14 @@ function FoodDetails() {
         <h2 data-testid="recipe-title">{ details.strMeal }</h2>
 
         <div>
+          { isCopied && <span>Link copied!</span>}
           <button
             type="button"
             data-testid="share-btn"
+            onClick={ () => {
+              navigator.clipboard.writeText(`http://localhost:3000${location}`);
+              setCopied(true);
+            } }
           >
             <BsShare />
           </button>
@@ -106,8 +132,10 @@ function FoodDetails() {
           <button
             type="button"
             data-testid="favorite-btn"
+            src={ src }
           >
-            <BsHeart />
+            { favoriteRecipes.some((recipe) => recipe === id) ? (
+              <FcLike />) : <BsHeart /> }
           </button>
         </div>
 
