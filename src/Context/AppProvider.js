@@ -119,9 +119,49 @@ function AppProvider({ children }) {
     return data;
   };
 
-  // const insertLocalStorage = () => {
+  const btnFavorite = (local, id) => {
+    let addRecipe = {};
+    const favoriteList = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const newFavoriteList = favoriteList.filter((recipe) => recipe.id !== id);
 
-  // }
+    if (isFavorite) {
+      setIsFavorite(false);
+
+      localStorage.setItem('favoriteRecipes', JSON.stringify([...newFavoriteList]));
+    } else {
+      setIsFavorite(true);
+
+      if (local === 'meals') {
+        addRecipe = {
+          id: details.idMeal,
+          type: 'food',
+          nationality: details.strArea,
+          category: details.strCategory,
+          alcoholicOrNot: '',
+          name: details.strMeal,
+          image: details.strMealThumb,
+        };
+      } else if (local === 'drinks') {
+        addRecipe = {
+          id: details.idDrink,
+          type: 'drink',
+          nationality: '',
+          category: details.strCategory,
+          alcoholicOrNot: details.strAlcoholic,
+          name: details.strDrink,
+          image: details.strDrinkThumb,
+        };
+      }
+
+      if (!favoriteList.some((recipe) => recipe.id === id)) {
+        localStorage
+          .setItem('favoriteRecipes', JSON.stringify([...favoriteList, addRecipe]));
+      } else {
+        localStorage
+          .setItem('favoriteRecipes', JSON.stringify([addRecipe]));
+      }
+    }
+  };
 
   const objApp = {
     email,
@@ -156,6 +196,7 @@ function AppProvider({ children }) {
     initialRequest,
     categories,
     detailsRequest,
+    btnFavorite,
   };
 
   return (

@@ -11,9 +11,9 @@ import '../Styles/RecipeDetails.css';
 
 function FoodDetails() {
   const { detailsRequest, details, setDetails, ingredientList, setIngredientList,
-    recomendations, setRecomendations, doneRecipes, recipeInProgress,
-    favoriteRecipes, isCopied, setCopied, getDoneRecipe, getRecipeInProgress,
-    getFavoriteRecipes, isFavorite, setIsFavorite } = useContext(appContext);
+    recomendations, setRecomendations, doneRecipes, recipeInProgress, favoriteRecipes,
+    isCopied, setCopied, getDoneRecipe, getRecipeInProgress, getFavoriteRecipes,
+    btnFavorite } = useContext(appContext);
 
   const history = useHistory();
   const location = useLocation().pathname;
@@ -97,7 +97,7 @@ function FoodDetails() {
             type="button"
             data-testid="favorite-btn"
             src={ src }
-            onClick={ () => setIsFavorite(!isFavorite) }
+            onClick={ () => btnFavorite('meals', id) }
           >
             { favoriteRecipes.some((recipe) => recipe === id) ? (
               <FcLike />) : <BsHeart /> }
