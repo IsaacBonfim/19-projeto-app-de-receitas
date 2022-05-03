@@ -11,13 +11,11 @@ function AppProvider({ children }) {
 
   const initialRequest = async (url, key) => {
     const data = await fetchApi(url);
-    console.log(data[key]);
     setRecipes(data[key]);
   };
 
   const categories = async (url, key) => {
     const data = await fetchApi(url);
-    console.log(data[key]);
     setCategory(data[key]);
   };
 
