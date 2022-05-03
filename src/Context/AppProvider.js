@@ -12,6 +12,7 @@ function AppProvider({ children }) {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const [ingredientList, setIngredientList] = useState([]);
   const [isCopied, setCopied] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
   const [recipes, setRecipes] = useState([]);
   const [recipeInProgress, setRecipeInProgress] = useState([]);
   const [recomendations, setRecomendations] = useState([]);
@@ -118,6 +119,10 @@ function AppProvider({ children }) {
     return data;
   };
 
+  // const insertLocalStorage = () => {
+
+  // }
+
   const objApp = {
     email,
     recipes,
@@ -128,6 +133,7 @@ function AppProvider({ children }) {
     favoriteRecipes,
     ingredientList,
     isCopied,
+    isFavorite,
     recipeInProgress,
     recomendations,
     getDoneRecipe,
@@ -144,6 +150,7 @@ function AppProvider({ children }) {
     setIngredientList,
     setRecomendations,
     setRecipeInProgress,
+    setIsFavorite,
     searchFoods,
     searchDrinks,
     initialRequest,

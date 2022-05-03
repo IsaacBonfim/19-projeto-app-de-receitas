@@ -13,7 +13,7 @@ function DrinkDetails() {
   const { detailsRequest, details, setDetails, ingredientList, setIngredientList,
     recomendations, setRecomendations, doneRecipes, recipeInProgress,
     favoriteRecipes, isCopied, setCopied, getDoneRecipe, getRecipeInProgress,
-    getFavoriteRecipes } = useContext(appContext);
+    getFavoriteRecipes, isFavorite, setIsFavorite } = useContext(appContext);
 
   const history = useHistory();
   const location = useLocation().pathname;
@@ -93,6 +93,7 @@ function DrinkDetails() {
             type="button"
             data-testid="favorite-btn"
             src={ src }
+            onClick={ () => setIsFavorite(!isFavorite) }
           >
             { favoriteRecipes.some((recipe) => recipe === id) ? (
               <FcLike />) : <BsHeart /> }
