@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { BsShare, BsHeart } from 'react-icons/bs';
 import { FcLike } from 'react-icons/fc';
@@ -10,50 +10,14 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 import '../Styles/RecipeDetails.css';
 
 function FoodDetails() {
-  const { detailsRequest } = useContext(appContext);
-
-  const [details, setDetails] = useState({});
-  const [ingredientList, setIngredientList] = useState([]);
-  const [recomendations, setRecomendations] = useState([]);
-  const [doneRecipes, setDoneRecipes] = useState([]);
-  const [recipeInProgress, setRecipeInProgress] = useState([]);
-  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+  const { detailsRequest, details, setDetails, ingredientList, setIngredientList,
+    recomendations, setRecomendations, doneRecipes, recipeInProgress,
+    favoriteRecipes, isCopied, setCopied, getDoneRecipe, getRecipeInProgress,
+    getFavoriteRecipes } = useContext(appContext);
 
   const history = useHistory();
   const location = useLocation().pathname;
   const id = location.split('/')[2];
-
-  const [isCopied, setCopied] = useState(false);
-
-  const getDoneRecipe = () => {
-    if (localStorage.getItem('doneRecipes')) {
-      let aux = localStorage.getItem('doneRecipes');
-      aux = JSON.parse(aux);
-      const ids = aux.map((recipe) => recipe.id);
-
-      setDoneRecipes(ids);
-    }
-  };
-
-  const getRecipeInProgress = () => {
-    if (localStorage.getItem('inProgressRecipes')) {
-      let aux = localStorage.getItem('inProgressRecipes');
-      aux = JSON.parse(aux);
-      const recipes = aux.meals;
-
-      setRecipeInProgress(recipes);
-    }
-  };
-
-  const getFavoriteRecipes = () => {
-    if (localStorage.getItem('favoriteRecipes')) {
-      let aux = localStorage.getItem('favoriteRecipes');
-      aux = JSON.parse(aux);
-      const ids = aux.map((recipe) => recipe.id);
-
-      setFavoriteRecipes(ids);
-    }
-  };
 
   useEffect(() => {
     const getDatails = async () => {
@@ -92,10 +56,10 @@ function FoodDetails() {
 
     getDoneRecipe();
 
-    getRecipeInProgress();
+    getRecipeInProgress('meals');
 
     getFavoriteRecipes();
-  }, [detailsRequest, id]);
+  }, []);
 
   const btnStartRecipe = () => {
     history.push(`/foods/${id}/in-progress`);
