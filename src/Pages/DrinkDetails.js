@@ -12,48 +12,60 @@ function DrinkDetails() {
   const [details, setDetails] = useState({});
   const [ingredientList, setIngredientList] = useState([]);
   const [recomendations, setRecomendations] = useState([]);
+  const [doneRecipes, setDoneRecipes] = useState([]);
 
   const location = useLocation().pathname;
   const id = location.split('/')[2];
 
-  const getDatails = async () => {
-    const url = 'thecocktaildb';
-    const aux = await detailsRequest(url, id);
-    const [recipe] = aux.drinks;
+  useEffect(() => {
+    const getDatails = async () => {
+      const url = 'thecocktaildb';
+      const aux = await detailsRequest(url, id);
+      const [recipe] = aux.drinks;
 
-    const ingredients = [];
-    const maxIngredients = 19;
+      const ingredients = [];
+      const maxIngredients = 19;
 
-    for (let index = 0; index <= maxIngredients; index += 1) {
-      if (recipe[`strIngredient${index + 1}`]) {
-        ingredients.push(
-          `${recipe[`strIngredient${index + 1}`]} - ${recipe[`strMeasure${index + 1}`]}`,
-        );
+      for (let index = 0; index <= maxIngredients; index += 1) {
+        if (recipe[`strIngredient${index + 1}`]) {
+          ingredients.push(
+            `${recipe[`strIngredient${index + 1}`]} 
+            - ${recipe[`strMeasure${index + 1}`]}`,
+          );
+        }
       }
-    }
 
-    console.log(recipe);
-    setDetails(recipe);
-    setIngredientList(ingredients);
-  };
+      console.log(recipe);
+      setDetails(recipe);
+      setIngredientList(ingredients);
+    };
 
-  const getRecomendations = async () => {
-    const aux = await fetchApi('https://www.themealdb.com/api/json/v1/1/search.php?s=');
-    const recomend = aux.meals;
-    const limite = 6;
-
-    setRecomendations(recomend.slice(0, limite));
-  };
-
-  useEffect(() => {
     getDatails();
-    getRecomendations();
-  }, []);
 
-  useEffect(() => {
-    getDatails();
+    const getRecomendations = async () => {
+      const aux = await fetchApi('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+      const recomend = aux.meals;
+      const limite = 6;
+
+      setRecomendations(recomend.slice(0, limite));
+    };
+
     getRecomendations();
-  }, [id]);
+
+    getRecomendations();
+
+    const getDoneRecipe = () => {
+      if (localStorage.getItem('doneRecipes')) {
+        let aux = localStorage.getItem('doneRecipes');
+        aux = JSON.parse(aux);
+        const ids = aux.map((recipe) => recipe.id);
+
+        setDoneRecipes(ids);
+      }
+    };
+
+    getDoneRecipe();
+  }, [detailsRequest, id]);
 
   return (
     <>
@@ -125,15 +137,17 @@ function DrinkDetails() {
 
       <div className="teste">teste</div>
 
-      <section className="start-section">
-        <button
-          type="button"
-          className="start-btn"
-          data-testid="start-recipe-btn"
-        >
-          Start Recipe
-        </button>
-      </section>
+      { doneRecipes.some((recipe) => recipe === id) ? '' : (
+        <section className="start-section">
+          <button
+            type="button"
+            className="start-btn"
+            data-testid="start-recipe-btn"
+          >
+            Start Recipe
+          </button>
+        </section>
+      ) }
     </>
   );
 }
