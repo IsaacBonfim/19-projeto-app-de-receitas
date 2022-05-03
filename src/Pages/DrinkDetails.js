@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { BsShare, BsHeart } from 'react-icons/bs';
 import appContext from '../Context/AppConText';
 import RecomendationCard from '../Components/RecomendationCard';
@@ -13,9 +13,31 @@ function DrinkDetails() {
   const [ingredientList, setIngredientList] = useState([]);
   const [recomendations, setRecomendations] = useState([]);
   const [doneRecipes, setDoneRecipes] = useState([]);
+  const [recipeInProgress, setRecipeInProgress] = useState([]);
 
+  const history = useHistory();
   const location = useLocation().pathname;
   const id = location.split('/')[2];
+
+  const getDoneRecipe = () => {
+    if (localStorage.getItem('doneRecipes')) {
+      let aux = localStorage.getItem('doneRecipes');
+      aux = JSON.parse(aux);
+      const ids = aux.map((recipe) => recipe.id);
+
+      setDoneRecipes(ids);
+    }
+  };
+
+  const getRecipeInProgress = () => {
+    if (localStorage.getItem('inProgressRecipes')) {
+      let aux = localStorage.getItem('inProgressRecipes');
+      aux = JSON.parse(aux);
+      const recipes = aux.cocktails;
+
+      setRecipeInProgress(recipes);
+    }
+  };
 
   useEffect(() => {
     const getDatails = async () => {
@@ -52,20 +74,14 @@ function DrinkDetails() {
 
     getRecomendations();
 
-    getRecomendations();
-
-    const getDoneRecipe = () => {
-      if (localStorage.getItem('doneRecipes')) {
-        let aux = localStorage.getItem('doneRecipes');
-        aux = JSON.parse(aux);
-        const ids = aux.map((recipe) => recipe.id);
-
-        setDoneRecipes(ids);
-      }
-    };
-
     getDoneRecipe();
+
+    getRecipeInProgress();
   }, [detailsRequest, id]);
+
+  const btnStartRecipe = () => {
+    history.push(`/drinks/${id}/in-progress`);
+  };
 
   return (
     <>
@@ -143,8 +159,9 @@ function DrinkDetails() {
             type="button"
             className="start-btn"
             data-testid="start-recipe-btn"
+            onClick={ btnStartRecipe }
           >
-            Start Recipe
+            { recipeInProgress[id] ? 'Continue Recipe' : 'Start Recipe' }
           </button>
         </section>
       ) }

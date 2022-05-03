@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { BsShare, BsHeart } from 'react-icons/bs';
 import appContext from '../Context/AppConText';
 import RecomendationCard from '../Components/RecomendationCard';
@@ -13,9 +13,31 @@ function FoodDetails() {
   const [ingredientList, setIngredientList] = useState([]);
   const [recomendations, setRecomendations] = useState([]);
   const [doneRecipes, setDoneRecipes] = useState([]);
+  const [recipeInProgress, setRecipeInProgress] = useState([]);
 
+  const history = useHistory();
   const location = useLocation().pathname;
   const id = location.split('/')[2];
+
+  const getDoneRecipe = () => {
+    if (localStorage.getItem('doneRecipes')) {
+      let aux = localStorage.getItem('doneRecipes');
+      aux = JSON.parse(aux);
+      const ids = aux.map((recipe) => recipe.id);
+
+      setDoneRecipes(ids);
+    }
+  };
+
+  const getRecipeInProgress = () => {
+    if (localStorage.getItem('inProgressRecipes')) {
+      let aux = localStorage.getItem('inProgressRecipes');
+      aux = JSON.parse(aux);
+      const recipes = aux.meals;
+
+      setRecipeInProgress(recipes);
+    }
+  };
 
   useEffect(() => {
     const getDatails = async () => {
@@ -52,18 +74,14 @@ function FoodDetails() {
 
     getRecomendations();
 
-    const getDoneRecipe = () => {
-      if (localStorage.getItem('doneRecipes')) {
-        let aux = localStorage.getItem('doneRecipes');
-        aux = JSON.parse(aux);
-        const ids = aux.map((recipe) => recipe.id);
-
-        setDoneRecipes(ids);
-      }
-    };
-
     getDoneRecipe();
+
+    getRecipeInProgress();
   }, [detailsRequest, id]);
+
+  const btnStartRecipe = () => {
+    history.push(`/foods/${id}/in-progress`);
+  };
 
   return (
     <>
@@ -143,14 +161,15 @@ function FoodDetails() {
 
       <div className="teste">teste</div>
 
-      { doneRecipes.some((recipe) => recipe === id) ? '' : (
+      { doneRecipes.some((idRecipe) => idRecipe === id) ? '' : (
         <section className="start-section">
           <button
             type="button"
             className="start-btn"
             data-testid="start-recipe-btn"
+            onClick={ btnStartRecipe }
           >
-            Start Recipe
+            { recipeInProgress[id] ? 'Continue Recipe' : 'Start Recipe' }
           </button>
         </section>
       ) }
