@@ -9,7 +9,11 @@ const renderWithRouter = (component) => {
   return ({
     ...render(
       <AppProvider>
-        <Router history={ history }>{component}</Router>
+        <Router
+          history={ history }
+        >
+          {component}
+        </Router>
       </AppProvider>,
     ),
     history,

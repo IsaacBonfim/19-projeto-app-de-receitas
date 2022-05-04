@@ -12,8 +12,6 @@ function Nav({ categoriesName, page, tipo }) {
       const url = `https://www.${page}.com/api/json/v1/1/filter.php?c=${name}`;
       const data = await fetchApi(url);
       setRecipes(data[tipo]);
-      console.log(data);
-      console.log('clique');
       setActive(true);
     } else {
       initialRequest(`https://www.${page}.com/api/json/v1/1/search.php?s=`, tipo);

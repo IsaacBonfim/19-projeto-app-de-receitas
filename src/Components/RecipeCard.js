@@ -13,7 +13,7 @@ function RecipeCard({ recipeId, recipeName, recipeImg, index, link }) {
       className="recipe-card"
       data-testid={ `${index}-recipe-card` }
       onClick={ () => history.push(`${link}${recipeId}`) }
-      onKeyDown={ () => history.push(`${link}${recipeId}`) }
+      onKeyPress={ () => history.push(`${link}${recipeId}`) }
     >
       <img
         className="recipe-img"
