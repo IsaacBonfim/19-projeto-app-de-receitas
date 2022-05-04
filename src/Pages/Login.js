@@ -28,12 +28,16 @@ function Login() {
     localStorage.setItem('mealsToken', '1');
     localStorage.setItem('cocktailsToken', '1');
     localStorage.setItem('user', JSON.stringify({ email }));
+    localStorage.setItem('favoriteRecipes', JSON.stringify([]));
+    localStorage.setItem('doneRecipes', JSON.stringify([]));
+    localStorage
+      .setItem('inProgressRecipes', JSON.stringify({ cocktails: {}, meals: {} }));
 
     history.push('/foods');
   };
 
   return (
-    <main className="main-longin-page">
+    <div className="container-longin-page">
       <input
         type="email"
         className="login-input"
@@ -61,7 +65,7 @@ function Login() {
       >
         Enter
       </button>
-    </main>
+    </div>
   );
 }
 
