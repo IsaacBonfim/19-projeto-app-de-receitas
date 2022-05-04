@@ -18,8 +18,6 @@ function Food() {
   return (
     <>
       <Header title="Foods" />
-<<<<<<< HEAD
-=======
       <nav className="nav-bar">
         {
           category.map((item) => (
@@ -42,7 +40,6 @@ function Food() {
 
       </nav>
 
->>>>>>> 2cacbdfaad5e7adc7d38161a2603131470049593
       <section className="main-section">
         { recipes !== undefined && recipes !== null && recipes.length > 0 ? (
           recipes.map((recipe, index) => (
