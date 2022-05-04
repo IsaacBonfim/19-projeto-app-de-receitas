@@ -1,8 +1,9 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import Food from '../Pages/Food';
+import meals from '../../cypress/mocks/meals';
 
 const SEARCH_BTN = 'search-top-btn';
 
@@ -44,4 +45,15 @@ describe('Testa o componente Foodf', () => {
       const { location: { pathname } } = history;
       expect(pathname).toBe('/profile');
     });
+  it('Testa se o filtro All faz a requisição inicial', async () => {
+    renderWithRouter(<Food />);
+    jest.spyOn(global, 'fetch').mockResolvedValue({
+      json: jest.fn().mockResolvedValue(meals),
+    });
+    const allBtn = await screen.findByRole('button', { name: /all/i });
+    await act(async () => {
+      userEvent.click(allBtn);
+    });
+    expect(fetch).toHaveBeenCalledWith('https://www.themealdb.com/api/json/v1/1/search.php?s=');
+  });
 });

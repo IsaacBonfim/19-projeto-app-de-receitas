@@ -1,8 +1,9 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import Drink from '../Pages/Drink';
+import drinks from '../../cypress/mocks/drinks';
 
 const SEARCH_BTN = 'search-top-btn';
 
@@ -48,4 +49,15 @@ describe('Testa o componente Drink', () => {
       const { location: { pathname } } = history;
       expect(pathname).toBe('/profile');
     });
+  it('Testa se o filtro All faz a requisição inicial', async () => {
+    renderWithRouter(<Drink />);
+    jest.spyOn(global, 'fetch').mockResolvedValue({
+      json: jest.fn().mockResolvedValue(drinks),
+    });
+    const allBtn = await screen.findByRole('button', { name: /all/i });
+    await act(async () => {
+      userEvent.click(allBtn);
+    });
+    expect(fetch).toHaveBeenCalledWith('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
+  });
 });
