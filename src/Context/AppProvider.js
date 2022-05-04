@@ -122,8 +122,11 @@ function AppProvider({ children }) {
   const verifyStorage = (key) => {
     const info = JSON.parse(localStorage.getItem(key));
 
-    if (!info) {
-      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
+    if (!info && key !== 'inProgressRecipes') {
+      localStorage.setItem(key, JSON.stringify([]));
+    } else if (!info) {
+      localStorage
+        .setItem(key, JSON.stringify({ cocktails: {}, meals: {} }));
     }
   };
 

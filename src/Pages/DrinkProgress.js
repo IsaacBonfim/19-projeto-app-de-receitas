@@ -22,11 +22,10 @@ function DrinkProgress() {
       const ingredients = [];
       const maxIngredients = 19;
 
-      for (let index = 0; index <= maxIngredients; index += 1) {
-        if (recipe[`strIngredient${index + 1}`]) {
+      for (let i = 0; i <= maxIngredients; i += 1) {
+        if (recipe[`strIngredient${i + 1}`]) {
           ingredients.push(
-            `${recipe[`strIngredient${index + 1}`]} 
-            - ${recipe[`strMeasure${index + 1}`]}`,
+            `${recipe[`strIngredient${i + 1}`]} - ${recipe[`strMeasure${i + 1}`]}`,
           );
         }
       }

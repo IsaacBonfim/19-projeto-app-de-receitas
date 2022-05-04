@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { BsShare, BsHeart } from 'react-icons/bs';
 import { FcLike } from 'react-icons/fc';
@@ -8,7 +8,10 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 function FoodProgress() {
   const { details, isCopied, setCopied, favoriteRecipes, ingredientList,
-    setDetails, detailsRequest, setIngredientList } = useContext(appContext);
+    setDetails, detailsRequest, setIngredientList, verifyStorage,
+  } = useContext(appContext);
+
+  const [selectIngredients, setSelectIngredients] = useState([]);
 
   const location = useLocation().pathname;
   const id = location.split('/')[2];
@@ -22,11 +25,10 @@ function FoodProgress() {
       const ingredients = [];
       const maxIngredients = 19;
 
-      for (let index = 0; index <= maxIngredients; index += 1) {
-        if (recipe[`strIngredient${index + 1}`]) {
+      for (let i = 0; i <= maxIngredients; i += 1) {
+        if (recipe[`strIngredient${i + 1}`]) {
           ingredients.push(
-            `${recipe[`strIngredient${index + 1}`]} 
-            - ${recipe[`strMeasure${index + 1}`]}`,
+            `${recipe[`strIngredient${i + 1}`]} - ${recipe[`strMeasure${i + 1}`]}`,
           );
         }
       }
@@ -34,6 +36,7 @@ function FoodProgress() {
       console.log(recipe);
       setDetails(recipe);
       setIngredientList(ingredients);
+      verifyStorage('inProgressRecipes');
     };
 
     getDatails();
@@ -41,8 +44,26 @@ function FoodProgress() {
     // getDoneRecipe();
     // getRecipeInProgress('meals');
     // getFavoriteRecipes();
-    // verifyStorage('favoriteRecipes');
   }, []);
+
+  const checkIngredient = (checked, ingredientName) => {
+    const storage = JSON.parse(localStorage.getItem('inProgressRecipes'));
+
+    if (checked) {
+      setSelectIngredients([...selectIngredients, ingredientName]);
+    } else {
+      const newSelectedList = selectIngredients
+        .filter((ingredient) => ingredient !== ingredientName);
+
+      setSelectIngredients([...newSelectedList]);
+    }
+
+    const meals = {
+      [id]: selectIngredients,
+    };
+
+    localStorage.setItem('inProgressRecipes', JSON.stringify({ ...storage, meals }));
+  };
 
   const src = favoriteRecipes
     .some((recipe) => recipe === id) ? blackHeartIcon : whiteHeartIcon;
@@ -94,7 +115,11 @@ function FoodProgress() {
               key={ index }
               data-testid={ `${index}-ingredient-step` }
             >
-              <input type="checkbox" name={ ingredient } />
+              <input
+                type="checkbox"
+                name={ ingredient }
+                onChange={ ({ target }) => checkIngredient(target.checked, ingredient) }
+              />
               { ingredient }
             </li>
           )) }
