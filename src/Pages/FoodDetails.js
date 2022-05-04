@@ -13,7 +13,7 @@ function FoodDetails() {
   const { detailsRequest, details, setDetails, ingredientList, setIngredientList,
     recomendations, setRecomendations, doneRecipes, recipeInProgress, favoriteRecipes,
     isCopied, setCopied, getDoneRecipe, getRecipeInProgress, getFavoriteRecipes,
-    btnFavorite } = useContext(appContext);
+    btnFavorite, verifyStorage } = useContext(appContext);
 
   const history = useHistory();
   const location = useLocation().pathname;
@@ -55,10 +55,9 @@ function FoodDetails() {
     getRecomendations();
 
     getDoneRecipe();
-
     getRecipeInProgress('meals');
-
     getFavoriteRecipes();
+    verifyStorage('favoriteRecipes');
   }, []);
 
   const btnStartRecipe = () => {

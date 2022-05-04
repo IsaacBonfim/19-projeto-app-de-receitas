@@ -119,12 +119,20 @@ function AppProvider({ children }) {
     return data;
   };
 
+  const verifyStorage = (key) => {
+    const info = JSON.parse(localStorage.getItem(key));
+
+    if (!info) {
+      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
+    }
+  };
+
   const btnFavorite = (local, id) => {
     let addRecipe = {};
     const favoriteList = JSON.parse(localStorage.getItem('favoriteRecipes'));
     const newFavoriteList = favoriteList.filter((recipe) => recipe.id !== id);
 
-    if (isFavorite) {
+    if (favoriteList.some((recipe) => recipe.id === id)) {
       setIsFavorite(false);
 
       localStorage.setItem('favoriteRecipes', JSON.stringify([...newFavoriteList]));
@@ -153,14 +161,10 @@ function AppProvider({ children }) {
         };
       }
 
-      if (!favoriteList.some((recipe) => recipe.id === id)) {
-        localStorage
-          .setItem('favoriteRecipes', JSON.stringify([...favoriteList, addRecipe]));
-      } else {
-        localStorage
-          .setItem('favoriteRecipes', JSON.stringify([addRecipe]));
-      }
+      localStorage
+        .setItem('favoriteRecipes', JSON.stringify([...favoriteList, addRecipe]));
     }
+    getFavoriteRecipes();
   };
 
   const objApp = {
@@ -197,6 +201,7 @@ function AppProvider({ children }) {
     categories,
     detailsRequest,
     btnFavorite,
+    verifyStorage,
   };
 
   return (
