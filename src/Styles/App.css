@@ -12,14 +12,9 @@
 
 main {
   display: flex;
-<<<<<<< HEAD
-  flex-direction: column;
-  height: 100%;
-=======
   flex-flow: row wrap;
   height: auto;
   justify-content: center;
->>>>>>> 2cacbdfaad5e7adc7d38161a2603131470049593
   width: 100%;
 }
 
