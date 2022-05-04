@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import fetchApi from '../Services/FetchApi';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
+import IngredientCard from '../Components/IngredientCard';
 
 function ExploreFoodIngred() {
+  const [ingredientsList, setIngredientsList] = useState([]);
+  const doze = 12;
+
+  useEffect(async () => {
+    const getIngredients = await fetchApi('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
+    const response = getIngredients.meals;
+    console.log(response);
+    setIngredientsList(response.slice(0, doze));
+    console.log(ingredientsList);
+  }, []);
+
   return (
     <>
       <Header title="Explore Ingredients" />
-      <h1>Explorar Ingredientes de Comidas</h1>
+      {
+        ingredientsList.map((ingredient, index) => (
+          <IngredientCard
+            name={ ingredient.strIngredient }
+            index={ index }
+            key={ index }
+            type="meal"
+          />
+        ))
+      }
       <Footer />
     </>
   );
