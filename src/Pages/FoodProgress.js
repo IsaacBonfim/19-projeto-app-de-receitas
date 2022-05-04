@@ -46,9 +46,21 @@ function FoodProgress() {
     // getFavoriteRecipes();
   }, []);
 
-  const checkIngredient = (checked, ingredientName) => {
-    const storage = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  useEffect(() => {
+    const checkStorage = () => {
+      const storage = JSON.parse(localStorage.getItem('inProgressRecipes'));
 
+      const meals = {
+        [id]: selectIngredients,
+      };
+
+      localStorage.setItem('inProgressRecipes', JSON.stringify({ ...storage, meals }));
+    };
+
+    checkStorage();
+  }, [id, selectIngredients]);
+
+  const checkIngredient = (checked, ingredientName) => {
     if (checked) {
       setSelectIngredients([...selectIngredients, ingredientName]);
     } else {
@@ -57,12 +69,6 @@ function FoodProgress() {
 
       setSelectIngredients([...newSelectedList]);
     }
-
-    const meals = {
-      [id]: selectIngredients,
-    };
-
-    localStorage.setItem('inProgressRecipes', JSON.stringify({ ...storage, meals }));
   };
 
   const src = favoriteRecipes
@@ -118,7 +124,10 @@ function FoodProgress() {
               <input
                 type="checkbox"
                 name={ ingredient }
-                onChange={ ({ target }) => checkIngredient(target.checked, ingredient) }
+                checked={ selectIngredients.some((ingredt) => ingredt === ingredient) }
+                onChange={ ({ target }) => {
+                  checkIngredient(target.checked, ingredient);
+                } }
               />
               { ingredient }
             </li>
