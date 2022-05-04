@@ -7,7 +7,6 @@ import App from '../App';
 import emptyMeals from '../../cypress/mocks/emptyMeals';
 import drinks from '../../cypress/mocks/drinks';
 import emptyDrinks from '../../cypress/mocks/emptyDrinks';
-import soupMeals from '../../cypress/mocks/soupMeals';
 import ginDrinks from '../../cypress/mocks/ginDrinks';
 
 const SEARCHBTN = 'search-top-btn';
