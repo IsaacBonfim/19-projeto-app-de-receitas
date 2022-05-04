@@ -26,14 +26,9 @@ function Footer() {
           history.push('/drinks');
         } }
       >
-<<<<<<< HEAD
-        <ion-icon name="wine-sharp" />
-        {/* <img src={ drinkIcon } alt="Drink Icon" /> */}
-=======
         {/* <ion-icon name="wine-sharp" /> */}
         {/* <img src={ drinkIcon } alt="Drink Icon" /> */}
         <BiDrink />
->>>>>>> 2cacbdfaad5e7adc7d38161a2603131470049593
       </button>
 
       <button
@@ -43,14 +38,9 @@ function Footer() {
         alt="Explore Icon"
         onClick={ () => history.push('/explore') }
       >
-<<<<<<< HEAD
-        <ion-icon name="globe-outline" />
-        {/* <img src={ exploreIcon } alt="Explore Icon" /> */}
-=======
         {/* <ion-icon name="globe-outline" /> */}
         {/* <img src={ exploreIcon } alt="Explore Icon" /> */}
         <MdTravelExplore />
->>>>>>> 2cacbdfaad5e7adc7d38161a2603131470049593
       </button>
 
       <button
@@ -60,14 +50,9 @@ function Footer() {
         alt="Meal Icon"
         onClick={ () => history.push('/foods') }
       >
-<<<<<<< HEAD
-        <ion-icon name="restaurant-outline" />
-        {/* <img src={ mealIcon } alt="Meal Icon" /> */}
-=======
         {/* <ion-icon name="restaurant-outline" /> */}
         {/* <img src={ mealIcon } alt="Meal Icon" /> */}
         <IoRestaurantOutline />
->>>>>>> 2cacbdfaad5e7adc7d38161a2603131470049593
       </button>
     </footer>
   );
