@@ -6,8 +6,16 @@ import fetchApi from '../Services/FetchApi';
 function AppProvider({ children }) {
   const [email, setEmail] = useState('');
   const [btnLoginDisabled, setBtnLogin] = useState(true);
-  const [recipes, setRecipes] = useState([]);
   const [category, setCategory] = useState([]);
+  const [details, setDetails] = useState({});
+  const [doneRecipes, setDoneRecipes] = useState([]);
+  const [favoriteRecipes, setFavoriteRecipes] = useState([]);
+  const [ingredientList, setIngredientList] = useState([]);
+  const [isCopied, setCopied] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const [recipes, setRecipes] = useState([]);
+  const [recipeInProgress, setRecipeInProgress] = useState([]);
+  const [recomendations, setRecomendations] = useState([]);
 
   const initialRequest = async (url, key) => {
     const data = await fetchApi(url);
@@ -19,6 +27,36 @@ function AppProvider({ children }) {
     const data = await fetchApi(url);
     console.log(data[key]);
     setCategory(data[key]);
+  };
+
+  const getDoneRecipe = () => {
+    if (localStorage.getItem('doneRecipes')) {
+      let aux = localStorage.getItem('doneRecipes');
+      aux = JSON.parse(aux);
+      const ids = aux.map((recipe) => recipe.id);
+
+      setDoneRecipes(ids);
+    }
+  };
+
+  const getRecipeInProgress = (key) => {
+    if (localStorage.getItem('inProgressRecipes')) {
+      let aux = localStorage.getItem('inProgressRecipes');
+      aux = JSON.parse(aux);
+      const listRecipesInProgress = aux[key];
+
+      setRecipeInProgress(listRecipesInProgress);
+    }
+  };
+
+  const getFavoriteRecipes = () => {
+    if (localStorage.getItem('favoriteRecipes')) {
+      let aux = localStorage.getItem('favoriteRecipes');
+      aux = JSON.parse(aux);
+      const ids = aux.map((recipe) => recipe.id);
+
+      setFavoriteRecipes(ids);
+    }
   };
 
   const searchFoods = async (radio, value) => {
@@ -81,20 +119,89 @@ function AppProvider({ children }) {
     return data;
   };
 
+  const verifyStorage = (key) => {
+    const info = JSON.parse(localStorage.getItem(key));
+
+    if (!info) {
+      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
+    }
+  };
+
+  const btnFavorite = (local, id) => {
+    let addRecipe = {};
+    const favoriteList = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const newFavoriteList = favoriteList.filter((recipe) => recipe.id !== id);
+
+    if (favoriteList.some((recipe) => recipe.id === id)) {
+      setIsFavorite(false);
+
+      localStorage.setItem('favoriteRecipes', JSON.stringify([...newFavoriteList]));
+    } else {
+      setIsFavorite(true);
+
+      if (local === 'meals') {
+        addRecipe = {
+          id: details.idMeal,
+          type: 'food',
+          nationality: details.strArea,
+          category: details.strCategory,
+          alcoholicOrNot: '',
+          name: details.strMeal,
+          image: details.strMealThumb,
+        };
+      } else if (local === 'drinks') {
+        addRecipe = {
+          id: details.idDrink,
+          type: 'drink',
+          nationality: '',
+          category: details.strCategory,
+          alcoholicOrNot: details.strAlcoholic,
+          name: details.strDrink,
+          image: details.strDrinkThumb,
+        };
+      }
+
+      localStorage
+        .setItem('favoriteRecipes', JSON.stringify([...favoriteList, addRecipe]));
+    }
+    getFavoriteRecipes();
+  };
+
   const objApp = {
     email,
     recipes,
     btnLoginDisabled,
     category,
+    details,
+    doneRecipes,
+    favoriteRecipes,
+    ingredientList,
+    isCopied,
+    isFavorite,
+    recipeInProgress,
+    recomendations,
+    getDoneRecipe,
+    getFavoriteRecipes,
+    getRecipeInProgress,
     setEmail,
     setBtnLogin,
+    setCategory,
+    setCopied,
+    setRecipes,
+    setDetails,
+    setDoneRecipes,
+    setFavoriteRecipes,
+    setIngredientList,
+    setRecomendations,
+    setRecipeInProgress,
+    setIsFavorite,
     searchFoods,
     searchDrinks,
     initialRequest,
-    setCategory,
     categories,
-    setRecipes,
     detailsRequest,
+    btnFavorite,
+    verifyStorage,
   };
 
   return (

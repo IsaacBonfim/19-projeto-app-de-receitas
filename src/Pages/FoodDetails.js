@@ -1,59 +1,71 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
 import { BsShare, BsHeart } from 'react-icons/bs';
+import { FcLike } from 'react-icons/fc';
 import appContext from '../Context/AppConText';
 import RecomendationCard from '../Components/RecomendationCard';
 import fetchApi from '../Services/FetchApi';
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
 import '../Styles/RecipeDetails.css';
 
 function FoodDetails() {
-  const { detailsRequest } = useContext(appContext);
+  const { detailsRequest, details, setDetails, ingredientList, setIngredientList,
+    recomendations, setRecomendations, doneRecipes, recipeInProgress, favoriteRecipes,
+    isCopied, setCopied, getDoneRecipe, getRecipeInProgress, getFavoriteRecipes,
+    btnFavorite, verifyStorage } = useContext(appContext);
 
-  const [details, setDetails] = useState({});
-  const [ingredientList, setIngredientList] = useState([]);
-  const [recomendations, setRecomendations] = useState([]);
-
+  const history = useHistory();
   const location = useLocation().pathname;
   const id = location.split('/')[2];
 
-  const getDatails = async () => {
-    const url = 'themealdb';
-    const aux = await detailsRequest(url, id);
-    const [recipe] = aux.meals;
-
-    const ingredients = [];
-    const maxIngredients = 19;
-
-    for (let index = 0; index <= maxIngredients; index += 1) {
-      if (recipe[`strIngredient${index + 1}`]) {
-        ingredients.push(
-          `${recipe[`strIngredient${index + 1}`]} - ${recipe[`strMeasure${index + 1}`]}`,
-        );
-      }
-    }
-
-    console.log(recipe);
-    setDetails(recipe);
-    setIngredientList(ingredients);
-  };
-
-  const getRecomendations = async () => {
-    const aux = await fetchApi('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
-    const recomend = aux.drinks;
-    const limite = 6;
-
-    setRecomendations(recomend.slice(0, limite));
-  };
-
   useEffect(() => {
+    const getDatails = async () => {
+      const url = 'themealdb';
+      const aux = await detailsRequest(url, id);
+      const [recipe] = aux.meals;
+
+      const ingredients = [];
+      const maxIngredients = 19;
+
+      for (let index = 0; index <= maxIngredients; index += 1) {
+        if (recipe[`strIngredient${index + 1}`]) {
+          ingredients.push(
+            `${recipe[`strIngredient${index + 1}`]} 
+            - ${recipe[`strMeasure${index + 1}`]}`,
+          );
+        }
+      }
+
+      console.log(recipe);
+      setDetails(recipe);
+      setIngredientList(ingredients);
+    };
+
     getDatails();
+
+    const getRecomendations = async () => {
+      const aux = await fetchApi('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=');
+      const recomend = aux.drinks;
+      const limite = 6;
+
+      setRecomendations(recomend.slice(0, limite));
+    };
+
     getRecomendations();
+
+    getDoneRecipe();
+    getRecipeInProgress('meals');
+    getFavoriteRecipes();
+    verifyStorage('favoriteRecipes');
   }, []);
 
-  useEffect(() => {
-    getDatails();
-    getRecomendations();
-  }, [id]);
+  const btnStartRecipe = () => {
+    history.push(`/foods/${id}/in-progress`);
+  };
+
+  const src = favoriteRecipes
+    .some((recipe) => recipe === id) ? blackHeartIcon : whiteHeartIcon;
 
   return (
     <>
@@ -68,9 +80,14 @@ function FoodDetails() {
         <h2 data-testid="recipe-title">{ details.strMeal }</h2>
 
         <div>
+          { isCopied && <span>Link copied!</span>}
           <button
             type="button"
             data-testid="share-btn"
+            onClick={ () => {
+              navigator.clipboard.writeText(`http://localhost:3000${location}`);
+              setCopied(true);
+            } }
           >
             <BsShare />
           </button>
@@ -78,8 +95,11 @@ function FoodDetails() {
           <button
             type="button"
             data-testid="favorite-btn"
+            src={ src }
+            onClick={ () => btnFavorite('meals', id) }
           >
-            <BsHeart />
+            { favoriteRecipes.some((recipe) => recipe === id) ? (
+              <FcLike />) : <BsHeart /> }
           </button>
         </div>
 
@@ -133,15 +153,18 @@ function FoodDetails() {
 
       <div className="teste">teste</div>
 
-      <section className="start-section">
-        <button
-          type="button"
-          className="start-btn"
-          data-testid="start-recipe-btn"
-        >
-          Start Recipe
-        </button>
-      </section>
+      { doneRecipes.some((idRecipe) => idRecipe === id) ? '' : (
+        <section className="start-section">
+          <button
+            type="button"
+            className="start-btn"
+            data-testid="start-recipe-btn"
+            onClick={ btnStartRecipe }
+          >
+            { recipeInProgress[id] ? 'Continue Recipe' : 'Start Recipe' }
+          </button>
+        </section>
+      ) }
     </>
   );
 }

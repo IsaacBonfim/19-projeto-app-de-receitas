@@ -10,11 +10,13 @@ function Profile() {
   const history = useHistory();
 
   useEffect(() => {
-    let aux = localStorage.getItem('user');
-    aux = JSON.parse(aux);
-    const { email } = aux;
+    if (localStorage.getItem('user')) {
+      let aux = localStorage.getItem('user');
+      aux = JSON.parse(aux);
+      const { email } = aux;
 
-    setUser(email);
+      setUser(email);
+    }
   }, []);
 
   return (
