@@ -21,7 +21,7 @@ function Routes() {
   return (
     <Switch>
       <Route exact path="/foods" component={ Food } />
-      <Route exact path="/drinks" component={ Drink } />
+      <Route exact path="/drinks" render={ (props) => <Drink { ...props } /> } />
       <Route exact path="/foods/:id" component={ FoodDetails } />
       <Route exact path="/drinks/:id" component={ DrinkDetails } />
       <Route exact path="/foods/{id-da-receita}/in-progress" component={ FoodProgress } />
