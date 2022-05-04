@@ -10,7 +10,7 @@ describe('Testa o componente "ExploreFoodIngred"', () => {
     const title = screen
       .getByRole('heading', { name: /Explorar Ingredientes de Comidas/i });
     const title2 = screen.getByRole('heading', { name: /explore ingredients/i });
-    const profileIcon = screen.getByRole('img', { name: /profile icon/i });
+    const profileIcon = screen.getByTestId('profile-top-btn');
     expect(title).toBeInTheDocument();
     expect(title2).toBeInTheDocument();
     expect(profileIcon).toBeInTheDocument();
@@ -18,7 +18,7 @@ describe('Testa o componente "ExploreFoodIngred"', () => {
   it('Testa se ao clicar no botão de profile, redireciona para a página de profile',
     () => {
       const { history } = renderWithRouter(<ExploreFoodIngred />);
-      const profileBtn = screen.getByRole('img', { name: /profile icon/i });
+      const profileBtn = screen.getByTestId('profile-top-btn');
       userEvent.click(profileBtn);
       const { location: { pathname } } = history;
       expect(pathname).toBe('/profile');
