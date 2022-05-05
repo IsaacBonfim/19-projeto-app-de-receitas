@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 // import { useHistory } from 'react-router';
 import PropTypes, { string } from 'prop-types';
 import { BsShare } from 'react-icons/bs';
+import appContext from '../Context/AppConText';
 import shareIcon from '../images/shareIcon.svg';
 import '../Styles/DoneRecipe.css';
 
 function DoneRecipeCard({ name, index, image, category, date, tags, type, id }) {
+  const { isCopied, setCopied } = useContext(appContext);
+
   return (
     <div className="done-card">
       <img
@@ -18,6 +21,7 @@ function DoneRecipeCard({ name, index, image, category, date, tags, type, id }) 
       <main className="done-recipe-info">
         <sectios className="category">
           <span data-testid={ `${index}-horizontal-top-text` }>{ category }</span>
+          { isCopied && <span>Link copied!</span>}
           <button
             type="button"
             src={ shareIcon }
