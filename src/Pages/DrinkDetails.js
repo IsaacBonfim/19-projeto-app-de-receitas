@@ -142,7 +142,7 @@ function DrinkDetails() {
 
       <div className="teste">teste</div>
 
-      { doneRecipes.some((recipe) => recipe === id) ? '' : (
+      { doneRecipes.some((recipe) => recipe.id === id) ? '' : (
         <section className="start-section">
           <button
             type="button"

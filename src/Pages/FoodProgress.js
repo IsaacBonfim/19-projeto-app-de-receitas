@@ -80,6 +80,7 @@ function FoodProgress() {
   const btnFinishRecipe = () => {
     let addRecipe = {};
     const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+    const data = new Date();
 
     addRecipe = {
       id: details.idMeal,
@@ -89,7 +90,7 @@ function FoodProgress() {
       alcoholicOrNot: '',
       name: details.strMeal,
       image: details.strMealThumb,
-      doneDate: new Date(),
+      doneDate: data.toLocaleDateString(),
       tags: details.strTags.split(', '),
     };
 
