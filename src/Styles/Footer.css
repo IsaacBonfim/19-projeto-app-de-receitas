@@ -1,20 +1,23 @@
-.footer {
-  align-items: center;
-  background-color: white;
-  border-top: 1px solid black;
-  bottom: 0;
-  display: flex;
-  height: 10vh;
-  justify-content: space-between;
-  padding: 8px 0 0;
-  position: fixed;
-  text-align: center;
-  width: 100%;
-}
+@media screen and ( max-width : 360px ) {
 
-.footer button {
-  background-color: white;
-  border: 1px solid transparent;
-  font-size: 35px;
-  margin: 8px 12px;
+  .footer {
+    align-items: center;
+    background-color: white;
+    border-top: 1px solid black;
+    bottom: 0;
+    display: flex;
+    height: 10vh;
+    justify-content: space-between;
+    padding: 8px 0 0;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+  }
+
+  .footer button {
+    background-color: white;
+    border: 1px solid transparent;
+    font-size: 35px;
+    margin: 8px 12px;
+  }
 }

@@ -17,27 +17,33 @@ function ExploreFood() {
   return (
     <>
       <Header title="Explore Foods" />
-      <button
-        type="button"
-        data-testid="explore-by-ingredient"
-        onClick={ () => history.push('/explore/foods/ingredients') }
-      >
-        By Ingredient
-      </button>
-      <button
-        type="button"
-        data-testid="explore-by-nationality"
-        onClick={ () => history.push('/explore/foods/nationalities') }
-      >
-        By Nationality
-      </button>
-      <button
-        type="button"
-        data-testid="explore-surprise"
-        onClick={ () => surpriseClick() }
-      >
-        Surprise me!
-      </button>
+
+      <div className="explore-btn-container">
+        <button
+          type="button"
+          className="explore-btn"
+          data-testid="explore-by-ingredient"
+          onClick={ () => history.push('/explore/foods/ingredients') }
+        >
+          By Ingredient
+        </button>
+        <button
+          type="button"
+          className="explore-btn"
+          data-testid="explore-by-nationality"
+          onClick={ () => history.push('/explore/foods/nationalities') }
+        >
+          By Nationality
+        </button>
+        <button
+          type="button"
+          className="explore-btn"
+          data-testid="explore-surprise"
+          onClick={ () => surpriseClick() }
+        >
+          Surprise me!
+        </button>
+      </div>
       <Footer />
     </>
   );

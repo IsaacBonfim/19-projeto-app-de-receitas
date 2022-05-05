@@ -6,13 +6,15 @@ import RecipeCard from '../Components/RecipeCard';
 import Footer from '../Components/Footer';
 
 function Food() {
-  const { recipes, initialRequest, categories, category } = useContext(appContext);
+  const { recipes, initialRequest, categories, category,
+    setFilter } = useContext(appContext);
   const doze = 12;
   const cinco = 5;
 
   useEffect(() => {
-    initialRequest('https://www.themealdb.com/api/json/v1/1/search.php?s=', 'meals');
-    categories('https://www.themealdb.com/api/json/v1/1/list.php?c=list', 'meals');
+    initialRequest('themealdb', 'meals');
+    categories('themealdb', 'meals');
+    setFilter('');
   }, []);
 
   return (
@@ -33,7 +35,7 @@ function Food() {
           type="button"
           className="nav-button"
           data-testid="All-category-filter"
-          onClick={ () => (initialRequest('https://www.themealdb.com/api/json/v1/1/search.php?s=', 'meals')) }
+          onClick={ () => (initialRequest('themealdb', 'meals')) }
         >
           All
         </button>
