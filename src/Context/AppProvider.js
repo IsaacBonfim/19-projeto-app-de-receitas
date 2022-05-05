@@ -117,11 +117,17 @@ function AppProvider({ children }) {
     return data;
   };
 
-  const verifyStorage = (key) => {
+  const verifyStorage = (key, local, id) => {
     const info = JSON.parse(localStorage.getItem(key));
 
-    if (!info) {
-      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
+    if (!info && key !== 'inProgressRecipes') {
+      localStorage.setItem(key, JSON.stringify([]));
+    } else if (!info && local === 'foods') {
+      localStorage
+        .setItem(key, JSON.stringify({ cocktails: {}, meals: { [id]: [] } }));
+    } else if (!info && local === 'drinks') {
+      localStorage
+        .setItem(key, JSON.stringify({ cocktails: { [id]: [] }, meals: {} }));
     }
   };
 
