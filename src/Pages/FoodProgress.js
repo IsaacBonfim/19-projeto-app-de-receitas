@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { BsShare, BsHeart } from 'react-icons/bs';
 import { FcLike } from 'react-icons/fc';
 import appContext from '../Context/AppConText';
@@ -7,12 +7,13 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 function FoodProgress() {
-  const { details, isCopied, setCopied, favoriteRecipes, ingredientList,
-    setDetails, detailsRequest, setIngredientList, verifyStorage,
-  } = useContext(appContext);
+  const { detailsRequest, details, setDetails, ingredientList, setIngredientList,
+    isCopied, setCopied, favoriteRecipes, getFavoriteRecipes, btnFavorite,
+    verifyStorage } = useContext(appContext);
 
   const [selectIngredients, setSelectIngredients] = useState([]);
 
+  const history = useHistory();
   const location = useLocation().pathname;
   const id = location.split('/')[2];
 
@@ -38,13 +39,15 @@ function FoodProgress() {
       setIngredientList(ingredients);
     };
     getDatails();
+
     verifyStorage('inProgressRecipes', 'foods', id);
 
     const storage = JSON.parse(localStorage.getItem('inProgressRecipes'));
 
     if (storage.meals[id]) { setSelectIngredients(storage.meals[id]); }
 
-    // getFavoriteRecipes();
+    getFavoriteRecipes();
+    verifyStorage('favoriteRecipes');
   }, []);
 
   useEffect(() => {
@@ -147,7 +150,8 @@ function FoodProgress() {
           type="button"
           className="start-btn"
           data-testid="finish-recipe-btn"
-          // onClick={ btnStartRecipe }
+          disabled={ !ingredientList.every((item) => selectIngredients.includes(item)) }
+          onClick={ () => history.push('/done-recipes') }
         >
           Finish Recipe
         </button>

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { BsShare, BsHeart } from 'react-icons/bs';
 import { FcLike } from 'react-icons/fc';
 import appContext from '../Context/AppConText';
@@ -7,12 +7,13 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 function DrinkProgress() {
-  const { details, isCopied, setCopied, favoriteRecipes, ingredientList,
-    setDetails, detailsRequest, setIngredientList, verifyStorage,
-  } = useContext(appContext);
+  const { detailsRequest, details, setDetails, ingredientList, setIngredientList,
+    isCopied, setCopied, favoriteRecipes, getFavoriteRecipes, btnFavorite,
+    verifyStorage } = useContext(appContext);
 
   const [selectIngredients, setSelectIngredients] = useState([]);
 
+  const history = useHistory();
   const location = useLocation().pathname;
   const id = location.split('/')[2];
 
@@ -44,7 +45,8 @@ function DrinkProgress() {
 
     if (storage.cocktails[id]) { setSelectIngredients(storage.cocktails[id]); }
 
-    // getFavoriteRecipes();
+    getFavoriteRecipes();
+    verifyStorage('favoriteRecipes');
   }, []);
 
   useEffect(() => {
@@ -106,7 +108,7 @@ function DrinkProgress() {
             type="button"
             data-testid="favorite-btn"
             src={ src }
-            onClick={ () => btnFavorite('meals', id) }
+            onClick={ () => btnFavorite('drinks', id) }
           >
             { favoriteRecipes.some((recipe) => recipe === id) ? (
               <FcLike />) : <BsHeart /> }
@@ -148,7 +150,8 @@ function DrinkProgress() {
           type="button"
           className="start-btn"
           data-testid="finish-recipe-btn"
-          // onClick={ btnStartRecipe }
+          disabled={ !ingredientList.every((item) => selectIngredients.includes(item)) }
+          onClick={ () => history.push('/done-recipes') }
         >
           Finish Recipe
         </button>
