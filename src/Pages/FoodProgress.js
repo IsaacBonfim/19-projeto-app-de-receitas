@@ -48,6 +48,7 @@ function FoodProgress() {
 
     getFavoriteRecipes();
     verifyStorage('favoriteRecipes');
+    verifyStorage('doneRecipes');
   }, []);
 
   useEffect(() => {
@@ -74,6 +75,28 @@ function FoodProgress() {
 
       setSelectIngredients([...newSelectedList]);
     }
+  };
+
+  const btnFinishRecipe = () => {
+    let addRecipe = {};
+    const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+
+    addRecipe = {
+      id: details.idMeal,
+      type: 'food',
+      nationality: details.strArea,
+      category: details.strCategory,
+      alcoholicOrNot: '',
+      name: details.strMeal,
+      image: details.strMealThumb,
+      doneDate: new Date(),
+      tags: details.strTags.split(', '),
+    };
+
+    localStorage
+      .setItem('doneRecipes', JSON.stringify([...doneRecipes, addRecipe]));
+
+    history.push('/done-recipes');
   };
 
   const src = favoriteRecipes
@@ -151,7 +174,7 @@ function FoodProgress() {
           className="start-btn"
           data-testid="finish-recipe-btn"
           disabled={ !ingredientList.every((item) => selectIngredients.includes(item)) }
-          onClick={ () => history.push('/done-recipes') }
+          onClick={ btnFinishRecipe }
         >
           Finish Recipe
         </button>
