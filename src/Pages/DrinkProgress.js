@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { BsShare, BsHeart } from 'react-icons/bs';
 import { FcLike } from 'react-icons/fc';
@@ -8,7 +8,10 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 function DrinkProgress() {
   const { details, isCopied, setCopied, favoriteRecipes, ingredientList,
-    setDetails, detailsRequest, setIngredientList } = useContext(appContext);
+    setDetails, detailsRequest, setIngredientList, verifyStorage,
+  } = useContext(appContext);
+
+  const [selectIngredients, setSelectIngredients] = useState([]);
 
   const location = useLocation().pathname;
   const id = location.split('/')[2];
@@ -34,14 +37,42 @@ function DrinkProgress() {
       setDetails(recipe);
       setIngredientList(ingredients);
     };
-
     getDatails();
+    verifyStorage('inProgressRecipes', 'drinks', id);
 
-    // getDoneRecipe();
-    // getRecipeInProgress('meals');
+    const storage = JSON.parse(localStorage.getItem('inProgressRecipes'));
+
+    if (storage.cocktails[id]) { setSelectIngredients(storage.cocktails[id]); }
+
     // getFavoriteRecipes();
-    // verifyStorage('favoriteRecipes');
   }, []);
+
+  useEffect(() => {
+    const storage = JSON.parse(localStorage.getItem('inProgressRecipes'));
+
+    const checkStorage = () => {
+      const cocktails = {
+        ...storage.cocktails,
+        [id]: selectIngredients,
+      };
+
+      localStorage
+        .setItem('inProgressRecipes', JSON.stringify({ ...storage, cocktails }));
+    };
+
+    checkStorage();
+  }, [verifyStorage, id, selectIngredients]);
+
+  const checkIngredient = (checked, ingredientName) => {
+    if (checked) {
+      setSelectIngredients([...selectIngredients, ingredientName]);
+    } else {
+      const newSelectedList = selectIngredients
+        .filter((ingredient) => ingredient !== ingredientName);
+
+      setSelectIngredients([...newSelectedList]);
+    }
+  };
 
   const src = favoriteRecipes
     .some((recipe) => recipe === id) ? blackHeartIcon : whiteHeartIcon;
@@ -64,7 +95,7 @@ function DrinkProgress() {
             type="button"
             data-testid="share-btn"
             onClick={ () => {
-              navigator.clipboard.writeText(`http://localhost:3000${location}`);
+              navigator.clipboard.writeText(`http://localhost:3000/drinks/${id}`);
               setCopied(true);
             } }
           >
@@ -93,7 +124,14 @@ function DrinkProgress() {
               key={ index }
               data-testid={ `${index}-ingredient-step` }
             >
-              <input type="checkbox" name={ ingredient } />
+              <input
+                type="checkbox"
+                name={ ingredient }
+                checked={ selectIngredients.some((ingredt) => ingredt === ingredient) }
+                onChange={ ({ target }) => {
+                  checkIngredient(target.checked, ingredient);
+                } }
+              />
               { ingredient }
             </li>
           )) }

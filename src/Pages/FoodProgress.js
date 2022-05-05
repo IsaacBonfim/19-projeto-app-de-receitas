@@ -36,21 +36,23 @@ function FoodProgress() {
       console.log(recipe);
       setDetails(recipe);
       setIngredientList(ingredients);
-      verifyStorage('inProgressRecipes');
     };
-
     getDatails();
+    verifyStorage('inProgressRecipes', 'foods', id);
 
-    // getDoneRecipe();
-    // getRecipeInProgress('meals');
+    const storage = JSON.parse(localStorage.getItem('inProgressRecipes'));
+
+    if (storage.meals[id]) { setSelectIngredients(storage.meals[id]); }
+
     // getFavoriteRecipes();
   }, []);
 
   useEffect(() => {
-    const checkStorage = () => {
-      const storage = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    const storage = JSON.parse(localStorage.getItem('inProgressRecipes'));
 
+    const checkStorage = () => {
       const meals = {
+        ...storage.meals,
         [id]: selectIngredients,
       };
 
@@ -58,7 +60,7 @@ function FoodProgress() {
     };
 
     checkStorage();
-  }, [id, selectIngredients]);
+  }, [verifyStorage, id, selectIngredients]);
 
   const checkIngredient = (checked, ingredientName) => {
     if (checked) {
@@ -92,7 +94,7 @@ function FoodProgress() {
             type="button"
             data-testid="share-btn"
             onClick={ () => {
-              navigator.clipboard.writeText(`http://localhost:3000${location}`);
+              navigator.clipboard.writeText(`http://localhost:3000/foods/${id}`);
               setCopied(true);
             } }
           >
