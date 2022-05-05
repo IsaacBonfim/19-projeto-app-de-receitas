@@ -1,0 +1,25 @@
+@media screen and ( max-width : 360px ) {
+
+  .explore-btn-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .explore-btn {
+    border: 2px solid lightblue;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px lightslategray;
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    margin: 12px 0;
+    padding: 8px 16px;
+    width: 250px;
+  }
+
+  .explore-btn span {
+    margin: 0 8px;
+  }
+}

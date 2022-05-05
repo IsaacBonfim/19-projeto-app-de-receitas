@@ -26,8 +26,6 @@ function Footer() {
           history.push('/drinks');
         } }
       >
-        {/* <ion-icon name="wine-sharp" /> */}
-        {/* <img src={ drinkIcon } alt="Drink Icon" /> */}
         <BiDrink />
       </button>
 
@@ -38,8 +36,6 @@ function Footer() {
         alt="Explore Icon"
         onClick={ () => history.push('/explore') }
       >
-        {/* <ion-icon name="globe-outline" /> */}
-        {/* <img src={ exploreIcon } alt="Explore Icon" /> */}
         <MdTravelExplore />
       </button>
 
@@ -50,8 +46,6 @@ function Footer() {
         alt="Meal Icon"
         onClick={ () => history.push('/foods') }
       >
-        {/* <ion-icon name="restaurant-outline" /> */}
-        {/* <img src={ mealIcon } alt="Meal Icon" /> */}
         <IoRestaurantOutline />
       </button>
     </footer>
