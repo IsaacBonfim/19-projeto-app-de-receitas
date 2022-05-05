@@ -16,14 +16,22 @@ function AppProvider({ children }) {
   const [recipes, setRecipes] = useState([]);
   const [recipeInProgress, setRecipeInProgress] = useState([]);
   const [recomendations, setRecomendations] = useState([]);
+  const [filter, setFilter] = useState('');
 
   const initialRequest = async (url, key) => {
-    const data = await fetchApi(url);
+    let data = [];
+
+    if (filter) {
+      data = await fetchApi(`https://www.${url}.com/api/json/v1/1/filter.php?i=${filter}`);
+    } else {
+      data = await fetchApi(`https://www.${url}.com/api/json/v1/1/search.php?s=`);
+    }
+
     setRecipes(data[key]);
   };
 
   const categories = async (url, key) => {
-    const data = await fetchApi(url);
+    const data = await fetchApi(`https://www.${url}.com/api/json/v1/1/list.php?c=list`);
     setCategory(data[key]);
   };
 
@@ -206,6 +214,7 @@ function AppProvider({ children }) {
     detailsRequest,
     btnFavorite,
     verifyStorage,
+    setFilter,
   };
 
   return (

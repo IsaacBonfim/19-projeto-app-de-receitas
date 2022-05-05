@@ -8,12 +8,15 @@ function ExploreDrinkIngred() {
   const [ingredientsList, setIngredientsList] = useState([]);
   const doze = 12;
 
-  useEffect(async () => {
-    const getIngredients = await fetchApi('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list');
-    const response = getIngredients.drinks;
-    console.log(response);
-    setIngredientsList(response.slice(0, doze));
-    console.log(ingredientsList);
+  useEffect(() => {
+    const getApiIngredients = async () => {
+      const getIngredients = await fetchApi('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list');
+      const response = getIngredients.drinks;
+
+      setIngredientsList(response.slice(0, doze));
+    };
+
+    getApiIngredients();
   }, []);
 
   return (

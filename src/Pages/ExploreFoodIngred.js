@@ -8,12 +8,14 @@ function ExploreFoodIngred() {
   const [ingredientsList, setIngredientsList] = useState([]);
   const doze = 12;
 
-  useEffect(async () => {
-    const getIngredients = await fetchApi('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
-    const response = getIngredients.meals;
-    console.log(response);
-    setIngredientsList(response.slice(0, doze));
-    console.log(ingredientsList);
+  useEffect(() => {
+    const getApiIngredients = async () => {
+      const getIngredients = await fetchApi('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
+      const response = getIngredients.meals;
+      setIngredientsList(response.slice(0, doze));
+    };
+
+    getApiIngredients();
   }, []);
 
   return (

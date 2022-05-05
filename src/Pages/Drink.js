@@ -6,13 +6,15 @@ import RecipeCard from '../Components/RecipeCard';
 import Footer from '../Components/Footer';
 
 function Drink() {
-  const { recipes, initialRequest, categories, category } = useContext(appContext);
+  const { recipes, initialRequest, categories, category,
+    setFilter } = useContext(appContext);
   const doze = 12;
   const cinco = 5;
 
   useEffect(() => {
-    initialRequest('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=', 'drinks');
-    categories('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list', 'drinks');
+    initialRequest('thecocktaildb', 'drinks');
+    categories('thecocktaildb', 'drinks');
+    setFilter('');
   }, []);
 
   return (
@@ -33,7 +35,7 @@ function Drink() {
           type="button"
           className="nav-button"
           data-testid="All-category-filter"
-          onClick={ () => (initialRequest('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=', 'drinks')) }
+          onClick={ () => (initialRequest('thecocktaildb', 'drinks')) }
         >
           All
         </button>

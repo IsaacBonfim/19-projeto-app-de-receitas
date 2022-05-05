@@ -14,7 +14,7 @@ function Nav({ categoriesName, page, tipo }) {
       setRecipes(data[tipo]);
       setActive(true);
     } else {
-      initialRequest(`https://www.${page}.com/api/json/v1/1/search.php?s=`, tipo);
+      initialRequest(page, tipo);
       setActive(false);
     }
   };
