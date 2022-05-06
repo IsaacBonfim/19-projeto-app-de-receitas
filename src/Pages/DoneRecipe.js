@@ -1,16 +1,24 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Header from '../Components/Header';
 import appContext from '../Context/AppConText';
 import DoneRecipeCard from '../Components/DoneRecipeCard';
 
 function DoneRecipe() {
-  const { verifyStorage, getDoneRecipe, doneRecipes } = useContext(appContext);
+  const { verifyStorage, getDoneRecipe, doneRecipes,
+    setDoneRecipes } = useContext(appContext);
 
   useEffect(() => {
     verifyStorage('doneRecipes');
 
     getDoneRecipe();
   }, []);
+
+  const btnFilter = (type) => {
+    const aux = JSON.parse(localStorage.getItem('doneRecipes'));
+    const filtredRecipes = aux.filter((recipe) => recipe.type === type);
+
+    setDoneRecipes(filtredRecipes);
+  };
 
   return (
     <>
@@ -20,6 +28,7 @@ function DoneRecipe() {
         <button
           type="button"
           data-testid="filter-by-all-btn"
+          onClick={ getDoneRecipe }
         >
           All
         </button>
@@ -27,6 +36,7 @@ function DoneRecipe() {
         <button
           type="button"
           data-testid="filter-by-food-btn"
+          onClick={ () => btnFilter('food') }
         >
           Food
         </button>
@@ -34,6 +44,7 @@ function DoneRecipe() {
         <button
           type="button"
           data-testid="filter-by-drink-btn"
+          onClick={ () => btnFilter('drink') }
         >
           Drinks
         </button>

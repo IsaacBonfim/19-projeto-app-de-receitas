@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-// import { useHistory } from 'react-router';
+import { useHistory } from 'react-router';
 import PropTypes, { string } from 'prop-types';
 import { BsShare } from 'react-icons/bs';
 import appContext from '../Context/AppConText';
@@ -9,17 +9,27 @@ import '../Styles/DoneRecipe.css';
 function DoneRecipeCard({ name, index, image, category, date, tags, type, id }) {
   const { isCopied, setCopied } = useContext(appContext);
 
+  const history = useHistory();
+
   return (
     <div className="done-card">
-      <img
+      <div
+        role="button"
+        tabIndex={ index }
         className="done-img"
-        src={ image }
-        alt={ name }
-        data-testid={ `${index}-horizontal-image` }
-      />
+        onClick={ () => history.push(`/${type}s/${id}`) }
+        onKeyPress={ () => history.push(`/${type}s/${id}`) }
+      >
+        <img
+          className="done-img"
+          src={ image }
+          alt={ name }
+          data-testid={ `${index}-horizontal-image` }
+        />
+      </div>
 
       <main className="done-recipe-info">
-        <sectios className="category">
+        <section className="category">
           <span data-testid={ `${index}-horizontal-top-text` }>{ category }</span>
           { isCopied && <span>Link copied!</span>}
           <button
@@ -33,9 +43,17 @@ function DoneRecipeCard({ name, index, image, category, date, tags, type, id }) 
           >
             <BsShare />
           </button>
-        </sectios>
+        </section>
 
-        <span data-testid={ `${index}-horizontal-name` }>{ name }</span>
+        <span
+          role="button"
+          tabIndex={ index }
+          data-testid={ `${index}-horizontal-name` }
+          onClick={ () => history.push(`/${type}s/${id}`) }
+          onKeyPress={ () => history.push(`/${type}s/${id}`) }
+        >
+          { name }
+        </span>
         <span data-testid={ `${index}-horizontal-done-date` }>{ date }</span>
         { tags.map((tag, idx) => (
           <span

@@ -37,8 +37,7 @@ function AppProvider({ children }) {
 
   const getDoneRecipe = () => {
     if (localStorage.getItem('doneRecipes')) {
-      let aux = localStorage.getItem('doneRecipes');
-      aux = JSON.parse(aux);
+      const aux = JSON.parse(localStorage.getItem('doneRecipes'));
 
       setDoneRecipes(aux);
     }
