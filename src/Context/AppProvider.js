@@ -16,7 +16,7 @@ function AppProvider({ children }) {
   const [recipes, setRecipes] = useState([]);
   const [recipeInProgress, setRecipeInProgress] = useState([]);
   const [recomendations, setRecomendations] = useState([]);
-  const [filter, setFilter] = useState('a=American');
+  const [filter, setFilter] = useState('');
 
   const initialRequest = async (url, key) => {
     let data = [];
@@ -191,6 +191,7 @@ function AppProvider({ children }) {
     getDoneRecipe,
     getFavoriteRecipes,
     getRecipeInProgress,
+    filter,
     setEmail,
     setBtnLogin,
     setCategory,

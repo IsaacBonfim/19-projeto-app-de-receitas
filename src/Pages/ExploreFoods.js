@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
+import appContext from '../Context/AppConText';
 
 function ExploreFood() {
+  const { setFilter } = useContext(appContext);
   const history = useHistory();
 
   const surpriseClick = async () => {
@@ -31,7 +33,10 @@ function ExploreFood() {
           type="button"
           className="explore-btn"
           data-testid="explore-by-nationality"
-          onClick={ () => history.push('/explore/foods/nationalities') }
+          onClick={ () => {
+            setFilter('a=american');
+            history.push('/explore/foods/nationalities');
+          } }
         >
           By Nationality
         </button>

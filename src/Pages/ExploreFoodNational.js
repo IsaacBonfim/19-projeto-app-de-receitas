@@ -15,10 +15,9 @@ function ExploreFoodNational() {
     const getApiNationality = async () => {
       const getNationality = await fetchApi('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
       const response = getNationality.meals;
-      // console.log(getNationality);
       steNationalityList(response);
     };
-    setFilter('a=american');
+
     getApiNationality();
     initialRequest('themealdb', 'meals');
   }, []);
@@ -26,10 +25,14 @@ function ExploreFoodNational() {
   useEffect(() => {
     console.log('atualiza filtro');
     initialRequest('themealdb', 'meals');
-  }, [filter, setFilter]);
+  }, [filter]);
 
   const handleChange = (value) => {
-    setFilter(`a=${value}`);
+    if (value === 'All') {
+      setFilter('');
+    } else {
+      setFilter(`a=${value}`);
+    }
   };
 
   return (
@@ -42,6 +45,7 @@ function ExploreFoodNational() {
           className="explore-btn"
           onChange={ ({ target }) => handleChange(target.value) }
         >
+          <option value="All" data-testid="All-option">All</option>
           {
             nationalityList.map(({ strArea: area }, index) => (
               <option
