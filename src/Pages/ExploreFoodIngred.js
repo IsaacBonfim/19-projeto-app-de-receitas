@@ -21,16 +21,18 @@ function ExploreFoodIngred() {
   return (
     <>
       <Header title="Explore Ingredients" />
-      {
-        ingredientsList.map((ingredient, index) => (
-          <IngredientCard
-            name={ ingredient.strIngredient }
-            index={ index }
-            key={ index }
-            type="meal"
-          />
-        ))
-      }
+      <section className="explore-div">
+        {
+          ingredientsList.map((ingredient, index) => (
+            <IngredientCard
+              name={ ingredient.strIngredient }
+              index={ index }
+              key={ index }
+              type="meal"
+            />
+          ))
+        }
+      </section>
       <Footer />
     </>
   );

@@ -38,7 +38,7 @@ function ExploreFoodNational() {
   return (
     <>
       <Header title="Explore Nationalities" />
-      <div className="main-section">
+      <div className="explore-div">
         <select
           data-testid="explore-by-nationality-dropdown"
           id="nationality"
@@ -58,7 +58,7 @@ function ExploreFoodNational() {
             ))
           }
         </select>
-        <section>
+        <section className="national-recipes-section">
           {
             recipes.map((recipe, index) => (
               <RecipeCard

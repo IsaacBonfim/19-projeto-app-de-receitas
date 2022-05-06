@@ -20,7 +20,7 @@ function IngredientCard({ name, index, type }) {
     <div
       role="button"
       tabIndex={ index }
-      className="recipe-card"
+      className="ingrediente-card"
       data-testid={ `${index}-ingredient-card` }
       key={ index }
       onClick={ () => redirect(`i=${name}`) }

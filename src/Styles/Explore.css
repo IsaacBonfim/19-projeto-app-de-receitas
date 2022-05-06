@@ -20,12 +20,23 @@
   }
 
   .explore-div {
+    bottom: 70px;
     display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    overflow: scroll;
     position: absolute;
+    text-align: center;
     top: 80px;
   }
 
   .explore-btn span {
     margin: 0 8px;
+  }
+
+  .national-recipes-section {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
   }
 }

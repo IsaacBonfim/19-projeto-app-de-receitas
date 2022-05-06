@@ -16,11 +16,11 @@
     color: white;
     flex-grow: 1;
     font-size: 10px;
-    height: 180px;
+    height: 150px;
     margin: 8px 5px;
     padding: 4px 5px;
     transition: all 0.5s ease;
-    width: 180px;
+    width: 150px;
   }
 
   .recipe-card:hover {
@@ -32,7 +32,20 @@
 
   .recipe-img {
     border-radius: 12px;
-    height: 170px;
+    height: 140px;
+    margin-bottom: 4px;
     width: 100%;
+  }
+
+  .ingrediente-card {
+    border: 1px solid lightblue;
+    border-radius: 12px;
+    color: black;
+    flex-grow: 1;
+    font-size: 16px;
+    height: 180px;
+    margin: 8px 5px;
+    padding: 4px 5px;
+    width: 150px;
   }
 }

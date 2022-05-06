@@ -16,7 +16,7 @@ function RecomendationCard({ recipeId, recipeName, recipeImg, index, link }) {
       onKeyDown={ () => history.push(`${link}${recipeId}`) }
     >
       <img
-        className="recipe-img"
+        className="recomendation-img"
         src={ recipeImg }
         alt={ recipeName }
         data-testid={ `${index}-card-img` }
