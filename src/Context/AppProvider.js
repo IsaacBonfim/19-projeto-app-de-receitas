@@ -16,13 +16,13 @@ function AppProvider({ children }) {
   const [recipes, setRecipes] = useState([]);
   const [recipeInProgress, setRecipeInProgress] = useState([]);
   const [recomendations, setRecomendations] = useState([]);
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState('a=American');
 
   const initialRequest = async (url, key) => {
     let data = [];
 
     if (filter) {
-      data = await fetchApi(`https://www.${url}.com/api/json/v1/1/filter.php?i=${filter}`);
+      data = await fetchApi(`https://www.${url}.com/api/json/v1/1/filter.php?${filter}`);
     } else {
       data = await fetchApi(`https://www.${url}.com/api/json/v1/1/search.php?s=`);
     }
