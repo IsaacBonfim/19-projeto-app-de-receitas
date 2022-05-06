@@ -1,0 +1,48 @@
+.not-container {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  justify-content: space-evenly;
+}
+
+.top-text {
+  align-self: center;
+}
+
+.middle-text {
+  align-self: center;
+}
+
+.not-found {
+  align-self: center;
+  animation: glow 1.2s ease infinite;
+  color: transparent;
+  font-size: 50px;
+  text-shadow:
+    1px 1px 2px red;
+}
+
+@keyframes glow {
+
+  50% {
+    color: red;
+    font-size: 55px;
+    text-shadow: 
+      3px 3px 2px black,
+      4px 4px 2px red,
+      5px 5px 3px black,
+      6px 6px 3px red,
+      7px 7px 4px black;
+  }
+
+  100% {
+    color: black;
+    font-size: 50px;
+    text-shadow: 
+      1px 1px 2px red,
+      2px 2px 2px black,
+      3px 3px 3px red,
+      4px 4px 3px black;
+  }
+}
