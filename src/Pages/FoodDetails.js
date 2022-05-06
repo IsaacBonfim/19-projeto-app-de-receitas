@@ -64,7 +64,7 @@ function FoodDetails() {
   };
 
   const src = favoriteRecipes
-    .some((recipe) => recipe === id) ? blackHeartIcon : whiteHeartIcon;
+    .some((recipe) => recipe.id === id) ? blackHeartIcon : whiteHeartIcon;
 
   return (
     <>
@@ -97,7 +97,7 @@ function FoodDetails() {
             src={ src }
             onClick={ () => btnFavorite('meals', id) }
           >
-            { favoriteRecipes.some((recipe) => recipe === id) ? (
+            { favoriteRecipes.some((recipe) => recipe.id === id) ? (
               <FcLike />) : <BsHeart /> }
           </button>
         </div>
@@ -152,7 +152,7 @@ function FoodDetails() {
 
       <div className="teste">teste</div>
 
-      { doneRecipes.some((idRecipe) => idRecipe === id) ? '' : (
+      { doneRecipes.some((recipe) => recipe.id === id) ? '' : (
         <section className="start-section">
           <button
             type="button"
