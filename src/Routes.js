@@ -16,6 +16,7 @@ import ExploreFoodNational from './Pages/ExploreFoodNational';
 import Profile from './Pages/Profile';
 import DoneRecipe from './Pages/DoneRecipe';
 import FavoriteRecipes from './Pages/FavoriteRecipe';
+import NotFound from './Pages/NotFound';
 
 function Routes() {
   return (
@@ -35,6 +36,11 @@ function Routes() {
         exact
         path="/explore/foods/nationalities"
         component={ ExploreFoodNational }
+      />
+      <Route
+        exact
+        path="/explore/drinks/nationalities"
+        component={ NotFound }
       />
       <Route exact path="/profile" component={ Profile } />
       <Route exact path="/done-recipes" component={ DoneRecipe } />
