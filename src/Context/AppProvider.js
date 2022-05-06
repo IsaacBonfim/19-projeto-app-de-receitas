@@ -55,11 +55,9 @@ function AppProvider({ children }) {
 
   const getFavoriteRecipes = () => {
     if (localStorage.getItem('favoriteRecipes')) {
-      let aux = localStorage.getItem('favoriteRecipes');
-      aux = JSON.parse(aux);
-      const ids = aux.map((recipe) => recipe.id);
+      const aux = JSON.parse(localStorage.getItem('favoriteRecipes'));
 
-      setFavoriteRecipes(ids);
+      setFavoriteRecipes(aux);
     }
   };
 

@@ -101,7 +101,7 @@ function DrinkProgress() {
   };
 
   const src = favoriteRecipes
-    .some((recipe) => recipe === id) ? blackHeartIcon : whiteHeartIcon;
+    .some((recipe) => recipe.id === id) ? blackHeartIcon : whiteHeartIcon;
 
   return (
     <>
@@ -134,7 +134,7 @@ function DrinkProgress() {
             src={ src }
             onClick={ () => btnFavorite('drinks', id) }
           >
-            { favoriteRecipes.some((recipe) => recipe === id) ? (
+            { favoriteRecipes.some((recipe) => recipe.id === id) ? (
               <FcLike />) : <BsHeart /> }
           </button>
         </div>
