@@ -22,7 +22,7 @@ function AppProvider({ children }) {
     let data = [];
 
     if (filter) {
-      data = await fetchApi(`https://www.${url}.com/api/json/v1/1/filter.php?i=${filter}`);
+      data = await fetchApi(`https://www.${url}.com/api/json/v1/1/filter.php?${filter}`);
     } else {
       data = await fetchApi(`https://www.${url}.com/api/json/v1/1/search.php?s=`);
     }
@@ -191,6 +191,7 @@ function AppProvider({ children }) {
     getDoneRecipe,
     getFavoriteRecipes,
     getRecipeInProgress,
+    filter,
     setEmail,
     setBtnLogin,
     setCategory,

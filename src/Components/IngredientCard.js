@@ -23,8 +23,8 @@ function IngredientCard({ name, index, type }) {
       className="recipe-card"
       data-testid={ `${index}-ingredient-card` }
       key={ index }
-      onClick={ () => redirect(name) }
-      onKeyDown={ () => redirect(name) }
+      onClick={ () => redirect(`i=${name}`) }
+      onKeyDown={ () => redirect(`i=${name}`) }
     >
       <img
         className="recipe-img"
