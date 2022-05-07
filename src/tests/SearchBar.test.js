@@ -202,13 +202,14 @@ describe('Testa o componente "Search"', () => {
       expect(alert)
         .toHaveBeenCalledWith(MSG1);
     });
-
   it('Caso apenas uma receita seja encontrada, deve-se ir para sua rota de detalhes',
     async () => {
       const { history } = renderWithRouter(<App />);
       history.push('/foods');
       jest.spyOn(global, 'fetch').mockResolvedValue({
-        json: jest.fn().mockResolvedValue(oneMeal),
+        json: jest.fn().mockResolvedValue(drinks).mockResolvedValueOnce(oneMeal)
+          .mockResolvedValueOnce(drinks)
+          .mockResolvedValueOnce(meals),
       });
       const searchBtn = screen.getByTestId(SEARCHBTN);
       fireEvent.click(searchBtn);
@@ -221,15 +222,17 @@ describe('Testa o componente "Search"', () => {
         userEvent.type(searchInput, 'Arrabiata');
         userEvent.click(makeSearch);
       });
+      // expect(fetch).toHaveBeenCalledWith('arara');
       expect(history.location.pathname).toBe('/foods/52771');
     });
-
   it('Caso apenas uma bebida seja encontrada, deve-se ir para sua rota de detalhes',
     async () => {
       const { history } = renderWithRouter(<App />);
       history.push('/drinks');
       jest.spyOn(global, 'fetch').mockResolvedValue({
-        json: jest.fn().mockResolvedValue(oneDrink),
+        json: jest.fn().mockResolvedValue(meals).mockResolvedValueOnce(oneDrink)
+          .mockResolvedValueOnce(meals)
+          .mockResolvedValueOnce(drinks),
       });
       const searchBtn = screen.getByTestId(SEARCHBTN);
       fireEvent.click(searchBtn);

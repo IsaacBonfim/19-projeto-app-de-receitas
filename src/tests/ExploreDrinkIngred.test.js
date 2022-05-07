@@ -7,10 +7,8 @@ import ExploreDrinkIngred from '../Pages/ExploreDrinkIngred';
 describe('Testa o componente "ExploreDrinkIngred" ', () => {
   it('Verifica se o componente "ExploreDrinkIngred" foi renderizado corretamente', () => {
     renderWithRouter(<ExploreDrinkIngred />);
-    const title = screen.getByRole('heading', { name: /explorar ingredientes/i });
-    const title2 = screen.getByRole('heading', { name: /explore ingredients/i });
+    const title = screen.getByRole('heading', { name: /explore ingredients/i });
     expect(title).toBeInTheDocument();
-    expect(title2).toBeInTheDocument();
   });
   it('Testa se ao clicar no botão de profile, redireciona para a página de profile',
     () => {

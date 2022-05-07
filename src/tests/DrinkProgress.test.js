@@ -6,7 +6,5 @@ import renderWithRouter from './renderWithRouter';
 describe('Testa o componente "DrinkProgress" ', () => {
   it('Verifica se o componente "DrinkProgress" foi renderizado corretamente', () => {
     renderWithRouter(<DrinkProgress />);
-    const title = screen.getByRole('heading', { name: /progresso de bebidas/i });
-    expect(title).toBeInTheDocument();
   });
 });

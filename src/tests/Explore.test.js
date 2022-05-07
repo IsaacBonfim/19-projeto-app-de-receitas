@@ -8,11 +8,9 @@ describe('Testa o componente "Explore" ', () => {
   it('Verifica se o componente "Explore" foi renderizado corretamente', () => {
     renderWithRouter(<Explore />);
     const title1 = screen.getByRole('heading', { name: /explore/i });
-    const title2 = screen.getByRole('heading', { name: /explorar/i });
     const profileIcon = screen.getByTestId('profile-top-btn');
     expect(profileIcon).toBeInTheDocument();
     expect(title1).toBeInTheDocument();
-    expect(title2).toBeInTheDocument();
   });
   it('Testa se ao clicar no botão de profile, redireciona para a página de profile',
     () => {

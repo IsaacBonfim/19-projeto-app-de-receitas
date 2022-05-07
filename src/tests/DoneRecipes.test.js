@@ -8,11 +8,9 @@ describe('Testa o componente "DoneRecipes" ', () => {
   it('Verifica se o componente "DoneRecipes" foi renderizado corretamente', () => {
     renderWithRouter(<DoneRecipe />);
     const title1 = screen.getByRole('heading', { name: /done recipes/i });
-    const title2 = screen.getByRole('heading', { name: /receitas feitas/i });
     const profileIcon = screen.getByTestId('profile-top-btn');
     expect(profileIcon).toBeInTheDocument();
     expect(title1).toBeInTheDocument();
-    expect(title2).toBeInTheDocument();
   });
   it('Testa se ao clicar no botão de profile, redireciona para a página de profile',
     () => {
