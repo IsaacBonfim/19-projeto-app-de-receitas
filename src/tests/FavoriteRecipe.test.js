@@ -1,8 +1,13 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { FavoritesRecipes } from './inputs';
 import renderWithRouter from './renderWithRouter';
 import FavoriteRecipe from '../Pages/FavoriteRecipe';
+
+function saveLocalStorage() {
+  localStorage.setItem('favoriteRecipes', JSON.stringify(FavoritesRecipes));
+}
 
 describe('Testa o componente "FavoriteRecipe"', () => {
   it('Verifica se o componente "FavoriteRecipe" foi renderizado corretamente', () => {
@@ -20,4 +25,25 @@ describe('Testa o componente "FavoriteRecipe"', () => {
       const { location: { pathname } } = history;
       expect(pathname).toBe('/profile');
     });
+  it('Testa se as receitas sao renderizadas corretamente', () => {
+    saveLocalStorage();
+    renderWithRouter(<FavoriteRecipe />);
+    FavoritesRecipes.forEach((recipe, index) => {
+      if (recipe.type === 'food') {
+        const img = screen.getByTestId(`${index}-horizontal-image`);
+        const title = screen.getByTestId(`${index}-horizontal-top-text`);
+        const name = screen.getByTestId(`${index}-horizontal-name`);
+        expect(img.src).toBe(recipe.image);
+        expect(title.innerHTML).toBe(`${recipe.nationality} - ${recipe.category}`);
+        expect(name.innerHTML).toBe(recipe.name);
+      } else {
+        const img = screen.getByTestId(`${index}-horizontal-image`);
+        const title = screen.getByTestId(`${index}-horizontal-top-text`);
+        const name = screen.getByTestId(`${index}-horizontal-name`);
+        expect(img.src).toBe(recipe.image);
+        expect(title.innerHTML).toBe(recipe.alcoholicOrNot);
+        expect(name.innerHTML).toBe(recipe.name);
+      }
+    });
+  });
 });
