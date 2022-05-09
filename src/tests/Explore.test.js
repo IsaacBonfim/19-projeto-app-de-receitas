@@ -20,4 +20,18 @@ describe('Testa o componente "Explore" ', () => {
       const { location: { pathname } } = history;
       expect(pathname).toBe('/profile');
     });
+  it('Testa o Botão para filtros de drinks', () => {
+    const { history } = renderWithRouter(<Explore />);
+    const filter = screen.getByTestId('explore-drinks');
+    userEvent.click(filter);
+    const { location: { pathname } } = history;
+    expect(pathname).toBe('/explore/drinks');
+  });
+  it('Testa o Botão para filtros de foods', () => {
+    const { history } = renderWithRouter(<Explore />);
+    const filter = screen.getByTestId('explore-foods');
+    userEvent.click(filter);
+    const { location: { pathname } } = history;
+    expect(pathname).toBe('/explore/foods');
+  });
 });

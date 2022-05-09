@@ -43,6 +43,5 @@ describe('Testa o componente \'ExploreFood\'', () => {
     renderWithRouter(<ExploreFood />);
     fireEvent.click(filter3);
     expect(fetch).toHaveBeenCalledWith('https://www.themealdb.com/api/json/v1/1/random.php');
-    // expect(history.location.pathname).toBe(`/foods/${oneMeal.meals[0].idMeal}`);
   });
 });
