@@ -11,7 +11,6 @@ function ExploreFood() {
   const surpriseClick = async () => {
     const fetchApi = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
     const response = await fetchApi.json();
-    console.log(response.meals[0]);
     const surpriseFood = response.meals[0];
     history.push(`/foods/${surpriseFood.idMeal}`);
   };
