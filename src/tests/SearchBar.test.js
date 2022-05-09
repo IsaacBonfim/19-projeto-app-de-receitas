@@ -222,7 +222,6 @@ describe('Testa o componente "Search"', () => {
         userEvent.type(searchInput, 'Arrabiata');
         userEvent.click(makeSearch);
       });
-      // expect(fetch).toHaveBeenCalledWith('arara');
       expect(history.location.pathname).toBe('/foods/52771');
     });
   it('Caso apenas uma bebida seja encontrada, deve-se ir para sua rota de detalhes',

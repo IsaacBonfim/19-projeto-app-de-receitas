@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, fireEvent, act } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { FavoritesRecipes } from './inputs';
 import renderWithRouter from './renderWithRouter';
