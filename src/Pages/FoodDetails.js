@@ -36,7 +36,6 @@ function FoodDetails() {
         }
       }
 
-      console.log(recipe);
       setDetails(recipe);
       setIngredientList(ingredients);
     };

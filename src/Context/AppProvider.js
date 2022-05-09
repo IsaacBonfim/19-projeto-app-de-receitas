@@ -116,7 +116,6 @@ function AppProvider({ children }) {
   };
 
   const detailsRequest = async (url, key) => {
-    console.log(url, key);
     const data = await fetchApi(`https://www.${url}.com/api/json/v1/1/lookup.php?i=${key}`);
     return data;
   };

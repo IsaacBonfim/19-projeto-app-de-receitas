@@ -23,7 +23,6 @@ function ExploreFoodNational() {
   }, []);
 
   useEffect(() => {
-    console.log('atualiza filtro');
     initialRequest('themealdb', 'meals');
   }, [filter]);
 
