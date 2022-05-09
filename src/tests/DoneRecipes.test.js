@@ -3,7 +3,7 @@ import { fireEvent, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from './renderWithRouter';
 import DoneRecipe from '../Pages/DoneRecipe';
-import { RecipeslocalStorage } from './inputs';
+import { MultipleDoneRecipes, RecipeslocalStorage } from './inputs';
 
 const URL_DRINKS = '/drinks/178319';
 
@@ -67,5 +67,26 @@ describe('Testa o componente "DoneRecipes" ', () => {
     renderWithRouter(<DoneRecipe />);
     fireEvent.keyPress(name, { key: 'Enter', code: 13, charCode: 13 });
     expect(history.location.pathname).toBe(URL_DRINKS);
+  });
+  it('Testa os Botoes de filtro', () => {
+    const CLASS = '.done-card';
+    const FOUR = 4;
+    const TWO = 2;
+    localStorage.setItem('doneRecipes', JSON.stringify(MultipleDoneRecipes));
+    renderWithRouter(<DoneRecipe />);
+    const divs = document.querySelectorAll(CLASS);
+    expect(divs.length).toBe(FOUR);
+    const foodBtn = screen.getByRole('button', { name: /food/i });
+    fireEvent.click(foodBtn);
+    const foodDivs = document.querySelectorAll(CLASS);
+    expect(foodDivs.length).toBe(TWO);
+    const drinkBtn = screen.getByRole('button', { name: /drinks/i });
+    userEvent.click(drinkBtn);
+    const drinksDivs = document.querySelectorAll(CLASS);
+    expect(drinksDivs.length).toBe(TWO);
+    const allBtn = screen.getByRole('button', { name: /all/i });
+    userEvent.click(allBtn);
+    const allDivs = document.querySelectorAll(CLASS);
+    expect(allDivs.length).toBe(FOUR);
   });
 });
