@@ -44,14 +44,16 @@ function Drink() {
       <section className="main-section">
         { recipes !== undefined && recipes !== null && recipes.length > 0 ? (
           recipes.map((recipe, index) => (
-            <RecipeCard
-              key={ index }
-              link="/drinks/"
-              recipeId={ recipe.idDrink }
-              recipeName={ recipe.strDrink }
-              recipeImg={ recipe.strDrinkThumb }
-              index={ index }
-            />
+            <div key={ index } className="div-card-container">
+              <RecipeCard
+                link="/drinks/"
+                recipeId={ recipe.idDrink }
+                recipeName={ recipe.strDrink }
+                recipeImg={ recipe.strDrinkThumb }
+                index={ index }
+                recipe={ recipe }
+              />
+            </div>
           )).slice(0, doze))
           : '' }
       </section>

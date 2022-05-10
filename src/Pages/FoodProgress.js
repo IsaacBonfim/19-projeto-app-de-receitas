@@ -113,9 +113,9 @@ function FoodProgress() {
       />
 
       <section className="details-title-section">
-        <h2 data-testid="recipe-title">{ details.strMeal }</h2>
+        <h2 data-testid="recipe-title" className="recipe-title">{ details.strMeal }</h2>
 
-        <div>
+        <div className="btn-div">
           { isCopied && <span>Link copied!</span>}
           <button
             type="button"
@@ -139,29 +139,35 @@ function FoodProgress() {
           </button>
         </div>
 
-        <span data-testid="recipe-category">{ details.strCategory }</span>
-      </section>
+        <span
+          data-testid="recipe-category"
+          className="recipe-category"
+        >
+          { details.strCategory }
+        </span>
 
-      <section className="details-ingredients-section">
-        <h2>Ingredientes</h2>
-        <ul>
-          { ingredientList.map((ingredient, index) => (
-            <li
-              key={ index }
-              data-testid={ `${index}-ingredient-step` }
-            >
-              <input
-                type="checkbox"
-                name={ ingredient }
-                checked={ selectIngredients.some((ingredt) => ingredt === ingredient) }
-                onChange={ ({ target }) => {
-                  checkIngredient(target.checked, ingredient);
-                } }
-              />
-              { ingredient }
-            </li>
-          )) }
-        </ul>
+        <section className="details-ingredients-section">
+          <h2>Ingredientes</h2>
+          <ul>
+            { ingredientList.map((ingredient, index) => (
+              <li
+                key={ index }
+                data-testid={ `${index}-ingredient-step` }
+              >
+                <input
+                  type="checkbox"
+                  name={ ingredient }
+                  className="checkbox"
+                  checked={ selectIngredients.some((ingredt) => ingredt === ingredient) }
+                  onChange={ ({ target }) => {
+                    checkIngredient(target.checked, ingredient);
+                  } }
+                />
+                { ingredient }
+              </li>
+            )) }
+          </ul>
+        </section>
       </section>
 
       <section className="details-description-section">

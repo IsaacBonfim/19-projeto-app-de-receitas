@@ -1,4 +1,4 @@
-@media screen and ( max-width : 360px ) {
+@media screen and ( max-width : 768px ) {
 
   .main-section {
     bottom: 70px;
@@ -10,10 +10,21 @@
     top: 150px;
   }
 
+  .div-card-container {
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+  }
+
   .recipe-card {
-    border: 1px solid lightblue;
+    background-color: var(--main);
+    border: 2px solid var(--secondary);
     border-radius: 12px;
-    color: white;
+    box-shadow: 0 0 4px var(--tertiary);
+    color: transparent;
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
     font-size: 10px;
     height: 150px;
@@ -25,9 +36,13 @@
 
   .recipe-card:hover {
     color: black;
+    font-family: Oleo Script Swash Caps , cursive;
     font-size: 18px;
-    font-weight: 800;
-    height: 220px;
+    height: fit-content;
+  }
+
+  .recipe-card-ingredients {
+    display: none;
   }
 
   .recipe-img {
@@ -38,14 +53,123 @@
   }
 
   .ingrediente-card {
-    border: 1px solid lightblue;
+    background-color: var(--main);
+    border: 2px solid var(--secondary);
     border-radius: 12px;
-    color: black;
+    box-shadow: 0 0 4px var(--tertiary);
+    color: var(--secondary);
     flex-grow: 1;
-    font-size: 16px;
-    height: 180px;
+    font-family: Oleo Script Swash Caps , cursive;
+    font-size: 17px;
+    font-weight: 800;
+    height: 200px;
     margin: 8px 5px;
     padding: 4px 5px;
+    text-shadow: 1px 1px 2px var(--tertiary);
     width: 150px;
+  }
+}
+
+@media screen and ( min-width : 770px ) {
+
+  .main-section {
+    bottom: 90px;
+    display: flex;
+    flex-flow: row wrap;
+    overflow-y: scroll;
+    position: absolute;
+    text-align: center;
+    top: 180px;
+    width: 100%;
+  }
+
+  .main-section::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  .main-section::-webkit-scrollbar-track {
+    background-color: var(--tertiary);
+    border-radius: 12px;
+  }
+
+  .main-section::-webkit-scrollbar-thumb {
+    background-color: var(--secondary);
+    border-radius: 12px;
+  }
+
+  .div-card-container {
+    align-items: center;
+    display: flex;
+    height: 510px;
+    justify-content: center;
+    width: 25%;
+  }
+
+  .recipe-card {
+    align-items: center;
+    background-color: var(--tertiary);
+    border: 3px solid var(--secondary);
+    color: transparent;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    font-size: 10px;
+    height: 170px;
+    justify-content: center;
+    margin: 8px 16px;
+    padding: 4px 5px;
+    transition: all 1s ease;
+    width: 200px;
+  }
+
+  .recipe-card:hover {
+    background-color: var(--main);
+    box-shadow:
+      0 0 4px 3px var(--tertiary),
+      0 0 4px 3px var(--tertiary),
+      0 0 4px 3px var(--tertiary);
+    color: black;
+    font-family: Oleo Script Swash Caps , cursive;
+    font-size: 33px;
+    height: fit-content;
+    justify-content: flex-start;
+    margin: 0 16px;
+  }
+
+  .recipe-card-ingredients {
+    display: none;
+    font-family: Arial , Helvetica , sans-serif;
+    font-size: 18px;
+  }
+
+  .recipe-card:hover > .recipe-card-ingredients {
+    align-items: flex-start;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-left: 30px;
+  }
+
+  .recipe-img {
+    height: 190px;
+    margin-bottom: 4px;
+    width: 90%;
+  }
+
+  .ingrediente-card {
+    background-color: var(--main);
+    border: 2px solid var(--secondary);
+    border-radius: 12px;
+    box-shadow: 0 0 4px var(--tertiary);
+    color: var(--secondary);
+    font-family: Oleo Script Swash Caps , cursive;
+    font-size: 17px;
+    font-weight: 800;
+    height: 260px;
+    margin: 8px 5px;
+    padding: 4px 5px;
+    text-shadow: 1px 1px 2px var(--tertiary);
+    width: 250px;
   }
 }

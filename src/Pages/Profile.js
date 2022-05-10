@@ -24,12 +24,14 @@ function Profile() {
       <Header title="Profile" />
       <section className="profile-container">
         <span
+          className="profile-user"
           data-testid="profile-email"
         >
           { user }
         </span>
         <button
           type="button"
+          className="explore-btn"
           data-testid="profile-done-btn"
           onClick={ () => history.push('/done-recipes') }
         >
@@ -37,6 +39,7 @@ function Profile() {
         </button>
         <button
           type="button"
+          className="explore-btn"
           data-testid="profile-favorite-btn"
           onClick={ () => history.push('/favorite-recipes') }
         >
@@ -44,6 +47,7 @@ function Profile() {
         </button>
         <button
           type="button"
+          className="explore-btn"
           data-testid="profile-logout-btn"
           onClick={ () => {
             localStorage.clear();

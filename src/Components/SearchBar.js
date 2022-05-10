@@ -45,6 +45,7 @@ function SearchBar() {
             type="radio"
             name="search-radio"
             value="ingredient"
+            className="radio-input"
             data-testid="ingredient-search-radio"
             onChange={ ({ target }) => setRadio(target.value) }
           />
@@ -57,6 +58,7 @@ function SearchBar() {
             type="radio"
             name="search-radio"
             value="name"
+            className="radio-input"
             data-testid="name-search-radio"
             onChange={ ({ target }) => setRadio(target.value) }
           />
@@ -69,6 +71,7 @@ function SearchBar() {
             type="radio"
             name="search-radio"
             value="firstLetter"
+            className="radio-input"
             data-testid="first-letter-search-radio"
             onChange={ ({ target }) => setRadio(target.value) }
           />

@@ -18,7 +18,7 @@ function FavoriteRecipeCard({ name, index, image, category, type, id }) {
     .some((recipe) => recipe.id === id) ? blackHeartIcon : whiteHeartIcon;
 
   return (
-    <div className="done-card">
+    <div className="favorite-card">
       <div
         role="button"
         tabIndex={ index }
@@ -35,10 +35,13 @@ function FavoriteRecipeCard({ name, index, image, category, type, id }) {
       </div>
 
       <main className="done-recipe-info">
-        <span data-testid={ `${index}-horizontal-top-text` }>{ category }</span>
+        <section className="category">
+          <span data-testid={ `${index}-horizontal-top-text` }>{ category }</span>
+        </section>
         <span
           role="button"
           tabIndex={ index }
+          className="favorite-title"
           data-testid={ `${index}-horizontal-name` }
           onClick={ () => history.push(`/${type}s/${id}`) }
           onKeyPress={ () => history.push(`/${type}s/${id}`) }
@@ -46,7 +49,7 @@ function FavoriteRecipeCard({ name, index, image, category, type, id }) {
           { name }
         </span>
 
-        <section>
+        <section className="favorite-btn-section">
           { isCopied && <span>Link copied!</span>}
           <button
             type="button"

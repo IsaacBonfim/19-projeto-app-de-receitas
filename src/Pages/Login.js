@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import appContext from '../Context/AppConText';
+import Gif from '../images/_Logotipo.gif';
 import '../Styles/Login.css';
 
 function Login() {
@@ -38,6 +39,8 @@ function Login() {
 
   return (
     <div className="container-longin-page">
+      <h1 className="login-title">My Recipes</h1>
+      <img src={ Gif } alt="gif" className="login-logo" />
       <input
         type="email"
         className="login-input"

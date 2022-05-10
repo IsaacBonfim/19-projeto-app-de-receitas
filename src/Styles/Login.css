@@ -1,4 +1,33 @@
-@media screen and ( max-width : 360px ) {
+@media screen and ( max-width : 768px ) {
+
+  .login-title {
+    align-items: center;
+    animation: login 3.5s ease 1;
+    /* animation-delay: 2s; */
+    background-color: transparent;
+    color: var(--main);
+    display: flex;
+    font-family: Oleo Script Swash Caps , cursive;
+    font-size: 40px;
+    height: 70px;
+    justify-content: center;
+    position: absolute;
+    text-shadow: 3px 3px 6px var(--tertiary);
+    top: 120px;
+    width: 300px;
+  }
+
+  .login-logo {
+    align-items: center;
+    animation: logo 4s ease 1;
+    display: none;
+    height: auto;
+    justify-content: center;
+    opacity: 0;
+    position: absolute;
+    top: 100px;
+    width: 100%;
+  }
 
   .container-longin-page {
     align-items: center;
@@ -10,27 +39,200 @@
   }
 
   .login-input {
-    border: 2px solid lightblue;
+    border: 2px solid var(--tertiary);
     border-radius: 8px;
-    box-shadow: 1px 1px 6px 2px lightslategray;
+    box-shadow: 1px 1px 6px 2px var(--main);
     font-size: 20px;
     margin: 8px 0;
     padding: 6px 8px;
   }
 
   .login-button {
+    background-color: var(--main);
+    border: 2px outset var(--tertiary);
     border-radius: 8px;
-    font-size: 20px;
+    font-size: 18px;
     margin: 12px 0;
     padding: 6px 12px;
+    transition: 1.5s ease;
     width: 150px;
+  }
+
+  .login-button:disabled {
+    visibility: hidden;
+  }
+
+  .login-button:active {
+    border: 2px inset var(--tertiary);
+    box-shadow: 1px 1px 4px 2px inset var(--secondary);
+  }
+
+  @keyframes login {
+
+    0% {
+      animation-delay: 4s;
+      background-color: var(--secondary);
+      font-size: 20px;
+      height: 200px;
+      text-shadow: 1px 1px 1px var(--tertiary);
+      top: 200px;
+      width: 350px;
+    }
+
+    50% {
+      background-color: var(--secondary);
+    }
+
+  }
+
+  @keyframes logo {
+
+    0% {
+      display: flex;
+      opacity: 1;
+    }
+
+    50% {
+      display: flex;
+      opacity: 1;
+    }
+
+    60% {
+      display: flex;
+      opacity: 0;
+    }
   }
 }
 
-/* .main-longin-page {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  width: 100vw;
-} */
+@media screen and ( min-width : 770px ) {
+
+  .login-title {
+    align-items: center;
+    animation: login 3.5s ease 1;
+    animation-delay: 2s;
+    background-color: transparent;
+    color: var(--main);
+    display: flex;
+    font-family: Oleo Script Swash Caps , cursive;
+    font-size: 60px;
+    height: 70px;
+    justify-content: center;
+    position: absolute;
+    text-shadow:
+      3px 3px 6px var(--tertiary),
+      3px 3px 6px var(--tertiary);
+    top: 120px;
+    width: 450px;
+  }
+
+  .login-logo {
+    align-items: center;
+    animation: logo 4s ease 1;
+    display: none;
+    height: 500px;
+    justify-content: center;
+    opacity: 0;
+    position: absolute;
+    top: 130px;
+    width: 500px;
+  }
+
+  .container-longin-page {
+    align-items: center;
+    align-self: center;
+    background-color: var(--main);
+    border: 4px outset var(--secondary);
+    border-radius: 16px;
+    box-shadow:
+      0 0 2px 1px var(--secondary),
+      0 0 2px 1px var(--secondary),
+      0 0 2px 1px var(--secondary),
+      0 0 4px 4px var(--tertiary),
+      0 0 5px 5px var(--tertiary),
+      0 0 6px 6px var(--tertiary);
+    display: flex;
+    flex-direction: column;
+    height: 30vh;
+    justify-content: center;
+    min-width: 320px;
+    width: 25%;
+  }
+
+  .login-input {
+    border: 3px solid var(--tertiary);
+    border-radius: 8px;
+    box-shadow: 0 0 6px 1px var(--secondary);
+    font-size: 20px;
+    margin: 8px 0;
+    padding: 6px 8px;
+    transition: 1.5s ease;
+  }
+
+  .login-button {
+    background-color: var(--secondary);
+    border: 3px outset var(--tertiary);
+    border-radius: 8px;
+    color: var(--main);
+    font-size: 18px;
+    margin: 12px 0;
+    padding: 6px 12px;
+    transition: 1s ease;
+    width: 150px;
+  }
+
+  .login-button:disabled {
+    background-color: var(--main);
+    border: 3px solid var(--main);
+    color: transparent;
+    height: 1px;
+    width: 1px;
+  }
+
+  .login-button:hover {
+    border: 3px inset var(--tertiary);
+    box-shadow: 0 0 4px 3px inset var(--tertiary);
+  }
+
+  .login-button:active {
+    background-color: var(--main);
+    border: 3px inset var(--tertiary);
+    box-shadow: 1px 1px 4px 2px inset var(--tertiary);
+    color: var(--tertiary);
+  }
+
+  @keyframes login {
+
+    0% {
+      background-color: var(--secondary);
+      font-size: 30px;
+      height: 50%;
+      text-shadow: 1px 1px 1px var(--tertiary);
+      top: 200px;
+      width: 50%;
+    }
+
+    50% {
+      background-color: var(--secondary);
+    }
+
+  }
+
+  @keyframes logo {
+
+    0% {
+      display: flex;
+      opacity: 1;
+    }
+
+    50% {
+      display: flex;
+      opacity: 1;
+    }
+
+    60% {
+      display: flex;
+      opacity: 0;
+    }
+  }
+}
+

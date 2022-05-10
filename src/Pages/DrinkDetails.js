@@ -74,9 +74,9 @@ function DrinkDetails() {
       />
 
       <section className="details-title-section">
-        <h2 data-testid="recipe-title">{ details.strDrink }</h2>
+        <h2 data-testid="recipe-title" className="recipe-title">{ details.strDrink }</h2>
 
-        <div>
+        <div className="btn-div">
           { isCopied && <span>Link copied!</span>}
           <button
             type="button"
@@ -100,29 +100,33 @@ function DrinkDetails() {
           </button>
         </div>
 
-        <span data-testid="recipe-category">{ details.strAlcoholic }</span>
+        <span
+          data-testid="recipe-category"
+          className="recipe-category"
+        >
+          { details.strAlcoholic }
+        </span>
+        <section className="details-ingredients-section">
+          <h2>Ingredientes</h2>
+          <ul>
+            { ingredientList.map((ingredient, index) => (
+              <li
+                key={ index }
+                data-testid={ `${index}-ingredient-name-and-measure` }
+              >
+                { ingredient }
+              </li>
+            )) }
+          </ul>
+        </section>
       </section>
 
-      <section>
-        <h2>Ingredientes</h2>
-        <ul>
-          { ingredientList.map((ingredient, index) => (
-            <li
-              key={ index }
-              data-testid={ `${index}-ingredient-name-and-measure` }
-            >
-              { ingredient }
-            </li>
-          )) }
-        </ul>
-      </section>
-
-      <section>
+      <section className="details-description-section">
         <h2>Instruções</h2>
         <p data-testid="instructions">{ details.strInstructions }</p>
       </section>
 
-      <h2>Recomendações</h2>
+      <h2 className="recomendation-h2">Recomendações</h2>
       <section className="recomendation-section">
         { recomendations.map((recomendation, index) => (
           <div

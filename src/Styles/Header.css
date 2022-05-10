@@ -1,8 +1,9 @@
-@media screen and ( max-width : 360px ) {
+@media screen and ( max-width : 768px ) {
 
   .header {
     align-items: center;
-    background-color: white;
+    background-color: var(--secondary);
+    border-bottom: 3px inset var(--tertiary);
     display: flex;
     flex-wrap: wrap;
     height: 12vh;
@@ -14,7 +15,6 @@
 
   .header-container {
     align-items: center;
-    border-bottom: 1px solid black;
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
@@ -22,11 +22,31 @@
     width: 100%;
   }
 
+  .header-title {
+    color: transparent;
+    font-family: Oleo Script Swash Caps , cursive;
+    text-align: center;
+    text-shadow:
+      0 0 1px var(--main),
+      0 1px 2px var(--tertiary),
+      0 2px 2px var(--tertiary),
+      0 3px 5px var(--tertiary),
+      0 4px 5px var(--tertiary);
+  }
+
   .profile-button, .search-button {
-    background-color: white;
+    background-color: var(--secondary);
     border: 1px solid transparent;
-    font-size: 35px;
+    color: var(--main);
     margin: 0 12px;
+  }
+
+  .profile-button {
+    font-size: 35px;
+  }
+
+  .search-button {
+    font-size: 28px;
   }
 
   .ghost {
@@ -35,16 +55,20 @@
 
   .search-container {
     align-items: center;
-    background-color: white;
-    border-bottom: 1px solid black;
+    background-color: var(--main);
+    border-bottom: 3px outset var(--tertiary);
+    border-bottom-left-radius : 8px;
+    border-bottom-right-radius: 8px;
+    border-top: 3px inset var(--tertiary);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
   }
 
   .search-input {
-    border: 2px solid lightblue;
+    border: 2px inset var(--tertiary);
     border-radius: 8px;
+    box-shadow: 1px 1px 4px var(--secondary);
     font-size: 18px;
     margin: 10px 8px 4px;
     padding: 4px 8px;
@@ -57,12 +81,121 @@
     width: 100%;
   }
 
+  .radio-input {
+    margin: 0 4px;
+  }
+
   .search-bar-button {
-    background-color: rgba(220, 235, 255, 1);
-    border: 1px solid transparent;
+    background-color: var(--secondary);
+    border: 2px outset var(--tertiary);
+    border-radius: 8px;
+    box-shadow: 1px 1px 6px var(--secondary);
+    color: var(--main);
     font-size: 18px;
     margin: 10px 10px 16px;
     padding: 4px 8px;
+    text-shadow: 1px 1px 2px var(--main);
+    width: 100px;
+  }
+}
+
+@media screen and ( min-width : 770px ) {
+
+  .header {
+    align-items: center;
+    background-color: var(--secondary);
+    border-bottom: 3px inset var(--tertiary);
+    display: flex;
+    flex-wrap: wrap;
+    height: 100px;
+    justify-content: space-around;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .header-container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 16px 0;
+    padding-bottom: 10px;
+    width: 100%;
+  }
+
+  .header-title {
+    color: transparent;
+    font-family: Oleo Script Swash Caps , cursive;
+    font-size: 40px;
+    text-align: center;
+    text-shadow:
+      0 0 1px var(--main),
+      0 1px 2px var(--tertiary),
+      0 2px 2px var(--tertiary),
+      0 3px 5px var(--tertiary),
+      0 4px 5px var(--tertiary);
+  }
+
+  .profile-button, .search-button {
+    background-color: var(--secondary);
+    border: 1px solid transparent;
+    color: var(--main);
+    margin: 0 12px;
+  }
+
+  .profile-button {
+    font-size: 35px;
+  }
+
+  .search-button {
+    font-size: 28px;
+  }
+
+  .ghost {
+    width: 60.5px;
+  }
+
+  .search-container {
+    align-items: center;
+    background-color: var(--main);
+    border: 3px outset var(--tertiary);
+    border-bottom-left-radius : 8px;
+    border-bottom-right-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .search-input {
+    border: 2px inset var(--tertiary);
+    border-radius: 8px;
+    box-shadow: 1px 1px 4px var(--secondary);
+    font-size: 18px;
+    margin: 10px 8px 4px;
+    padding: 4px 8px;
+  }
+
+  .radio-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 8px 16px;
+    width: 100%;
+  }
+
+  .radio-input {
+    margin: 0 4px;
+  }
+
+  .search-bar-button {
+    background-color: var(--secondary);
+    border: 2px outset var(--tertiary);
+    border-radius: 8px;
+    box-shadow: 1px 1px 6px var(--secondary);
+    color: var(--main);
+    font-size: 18px;
+    margin: 10px 10px 16px;
+    padding: 4px 8px;
+    text-shadow: 1px 1px 2px var(--main);
     width: 100px;
   }
 }

@@ -1,4 +1,4 @@
-@media screen and ( max-width : 360px ) {
+@media screen and ( max-width : 768px ) {
 
   .nav-bar {
     align-self: center;
@@ -6,13 +6,49 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     position: absolute;
-    top: 75px;
+    top: 80px;
     width: 350px;
   }
 
   .nav-button {
+    background-color: var(--secondary);
+    border: 2px outset var(--tertiary);
+    border-radius: 6px;
+    box-shadow: 1px 1px 2px var(--tertiary);
+    color: var(--main);
+    font-weight: 800;
     margin: 4px 3px;
     padding: 4px;
+    text-shadow: 1px 1px 2px var(--main);
     width: 110px;
+  }
+}
+
+@media screen and ( min-width : 770px ) {
+
+  .nav-bar {
+    align-self: center;
+    background-color: var(--main);
+    border-bottom: 4px inset var(--tertiary);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 12px 0;
+    position: absolute;
+    top: 100px;
+    width: 100%;
+  }
+
+  .nav-button {
+    background-color: var(--secondary);
+    border: 3px outset var(--tertiary);
+    border-radius: 6px;
+    box-shadow: 1px 1px 2px var(--tertiary);
+    color: var(--main);
+    font-weight: 800;
+    margin: 4px 3px;
+    padding: 6px;
+    text-shadow: 1px 1px 2px var(--main);
+    width: 120px;
   }
 }

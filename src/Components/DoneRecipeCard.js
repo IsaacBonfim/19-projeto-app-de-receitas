@@ -31,6 +31,8 @@ function DoneRecipeCard({ name, index, image, category, date, tags, type, id }) 
       <main className="done-recipe-info">
         <section className="category">
           <span data-testid={ `${index}-horizontal-top-text` }>{ category }</span>
+        </section>
+        <section className="btn-share-section">
           { isCopied && <span>Link copied!</span>}
           <button
             type="button"
@@ -48,16 +50,23 @@ function DoneRecipeCard({ name, index, image, category, date, tags, type, id }) 
         <span
           role="button"
           tabIndex={ index }
+          className="done-category"
           data-testid={ `${index}-horizontal-name` }
           onClick={ () => history.push(`/${type}s/${id}`) }
           onKeyPress={ () => history.push(`/${type}s/${id}`) }
         >
           { name }
         </span>
-        <span data-testid={ `${index}-horizontal-done-date` }>{ date }</span>
+        <span
+          className="done-date"
+          data-testid={ `${index}-horizontal-done-date` }
+        >
+          { `Done date: ${date}` }
+        </span>
         { tags.map((tag, idx) => (
           <span
             key={ idx }
+            className="tags"
             data-testid={ `${index}-${tag}-horizontal-tag` }
           >
             { tag }

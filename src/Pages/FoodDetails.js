@@ -76,9 +76,9 @@ function FoodDetails() {
       />
 
       <section className="details-title-section">
-        <h2 data-testid="recipe-title">{ details.strMeal }</h2>
+        <h2 data-testid="recipe-title" className="recipe-title">{ details.strMeal }</h2>
 
-        <div>
+        <div className="btn-div">
           { isCopied && <span>Link copied!</span>}
           <button
             type="button"
@@ -102,21 +102,25 @@ function FoodDetails() {
           </button>
         </div>
 
-        <span data-testid="recipe-category">{ details.strCategory }</span>
-      </section>
-
-      <section className="details-ingredients-section">
-        <h2>Ingredientes</h2>
-        <ul>
-          { ingredientList.map((ingredient, index) => (
-            <li
-              key={ index }
-              data-testid={ `${index}-ingredient-name-and-measure` }
-            >
-              { ingredient }
-            </li>
-          )) }
-        </ul>
+        <span
+          data-testid="recipe-category"
+          className="recipe-category"
+        >
+          { details.strCategory }
+        </span>
+        <section className="details-ingredients-section">
+          <h2>Ingredientes</h2>
+          <ul>
+            { ingredientList.map((ingredient, index) => (
+              <li
+                key={ index }
+                data-testid={ `${index}-ingredient-name-and-measure` }
+              >
+                { ingredient }
+              </li>
+            )) }
+          </ul>
+        </section>
       </section>
 
       <section className="details-description-section">
@@ -124,7 +128,7 @@ function FoodDetails() {
         <p data-testid="instructions">{ details.strInstructions }</p>
       </section>
 
-      <section>
+      <section className="details-video-section">
         <h2>Video</h2>
         <embed
           data-testid="video"
@@ -132,7 +136,7 @@ function FoodDetails() {
         />
       </section>
 
-      <h2>Recomendações</h2>
+      <h2 className="recomendation-h2">Recomendações</h2>
       <section className="recomendation-section">
         { recomendations.map((recomendation, index) => (
           <div

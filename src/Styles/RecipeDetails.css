@@ -1,4 +1,4 @@
-@media screen and ( max-width : 360px ) {
+@media screen and ( max-width : 768px ) {
 
   .datails-img {
     height: 40vh;
@@ -8,37 +8,127 @@
   .details-title-section {
     align-items: center;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    margin: 8px 0;
-    position: relative;
+    margin: 8px 0 0;
     width: 100%;
   }
 
+  .recipe-title {
+    color: transparent;
+    font-family: Oleo Script Swash Caps , cursive;
+    font-size: 40px;
+    padding: 0 6px;
+    text-shadow:
+      0 0 1px var(--main),
+      0 1px 2px var(--tertiary),
+      0 2px 2px var(--tertiary),
+      0 3px 5px var(--tertiary),
+      0 4px 5px var(--tertiary);
+    width: 50%;
+  }
+
+  .recipe-category {
+    color: transparent;
+    padding: 0 12px;
+    text-shadow: 0 0 1px var(--main);
+  }
+
+  .btn-div {
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+  }
+
+  .btn-div button {
+    background-color: var(--main);
+    border: 1px solid transparent;
+    border-radius: 40%;
+    display: flex;
+    margin-right: 6px;
+    padding: 4px;
+  }
+
   .details-ingredients-section {
-    margin: 8px 0;
-    position: relative;
+    background-color: var(--secondary);
+    padding: 8px 0;
+    width: 100%;
+  }
+
+  .details-ingredients-section h2 {
+    color: var(--main);
+    margin: 4px 6px 8px;
+    text-shadow: 1px 1px 2px var(--main);
+  }
+
+  .details-ingredients-section ul {
+    color: var(--main);
+    line-height: 25px;
+    margin: 6px 32px;
   }
 
   .details-description-section {
-    margin: 8px 0;
-    position: relative;
+    background-color: var(--secondary);
+    color: var(--main);
+    padding: 8px 0;
+  }
+
+  .details-description-section h2 {
+    margin: 4px 6px 8px;
+    text-shadow: 1px 1px 2px var(--main);
+  }
+
+  .details-description-section p {
+    padding: 8px;
+    text-align: justify;
+  }
+
+  .details-video-section {
+    align-items: center;
+    background-color: var(--secondary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 12px;
+    width: 100%;
+  }
+
+  .details-video-section h2 {
+    color: var(--main);
+    margin: 4px 6px 12px;
+    text-shadow: 1px 1px 2px var(--main);
   }
 
   .recomendation-section {
+    background-color: var(--secondary);
     display: flex;
     height: fit-content;
     overflow: scroll;
   }
 
+  .recomendation-h2 {
+    background-color: var(--secondary);
+    color: var(--main);
+    padding: 12px;
+    text-align: center;
+    text-shadow: 1px 1px 2px var(--main);
+    width: 100%;
+  }
+
+  .checkbox {
+    margin: 0 8px 0 0;
+  }
+
   .teste {
-    color: white;
+    background-color: var(--secondary);
+    color: var(--secondary);
     height: 50px;
+    width: 100%;
   }
 
   .start-section {
     align-items: center;
-    background-color: white;
-    border-top: 1px solid black;
+    background-color: var(--secondary);
     bottom: 40px;
     display: flex;
     justify-content: center;
@@ -48,13 +138,206 @@
   }
 
   .start-btn {
-    border: 4px outset lightblue;
+    background-color: var(--main);
+    border: 4px outset var(--tertiary);
     bottom: 0;
     font-size: 20px;
     font-weight: 800;
     margin: 0 1px;
     padding: 8px;
     position: fixed;
+    transition: 1s ease;
     width: 100%;
+  }
+
+  .start-btn:disabled {
+    visibility: hidden;
+  }
+}
+
+@media screen and ( min-width : 770px ) {
+
+  .datails-img {
+    border-radius: 12px;
+    box-shadow:
+      0 0 2px 3px var(--secondary),
+      0 0 5px 3px var(--tertiary),
+      0 0 5px 3px var(--tertiary),
+      0 0 5px 3px var(--tertiary),
+      0 0 5px 3px var(--tertiary);
+    height: 400px;
+    margin: 12px;
+    width: 43%;
+  }
+
+  .details-title-section {
+    align-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 8px 0;
+    width: 55%;
+  }
+
+  .recipe-title {
+    color: transparent;
+    font-family: Oleo Script Swash Caps , cursive;
+    font-size: 60px;
+    padding: 0 6px;
+    text-shadow:
+      0 0 1px var(--main),
+      0 1px 2px var(--tertiary),
+      0 2px 2px var(--tertiary),
+      0 3px 5px var(--tertiary),
+      0 4px 5px var(--tertiary);
+    width: 50%;
+  }
+
+  .recipe-category {
+    color: transparent;
+    font-size: 20px;
+    padding: 0 12px;
+    text-shadow: 0 0 1px var(--main);
+  }
+
+  .btn-div {
+    align-items: center;
+    color: var(--main);
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px;
+    width: 50%;
+  }
+
+  .btn-div button {
+    background-color: var(--secondary);
+    border: 1px solid transparent;
+    border-radius: 40%;
+    color: var(--main);
+    display: flex;
+    font-size: 20px;
+    margin: 0 16px;
+    padding: 8px;
+  }
+
+  .details-ingredients-section {
+    background-color: var(--secondary);
+    display: flex;
+    flex-flow: column wrap;
+    height: 290px;
+    padding: 8px 0;
+    width: 100%;
+  }
+
+  .details-ingredients-section h2 {
+    color: var(--main);
+    margin: 4px 6px 8px;
+    text-shadow: 2px 2px 3px var(--tertiary);
+    width: 100%;
+  }
+
+  .details-ingredients-section ul {
+    color: var(--main);
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 25px;
+    margin: 6px 32px;
+  }
+
+  .details-ingredients-section li {
+    display: flex;
+    width: 50%;
+  }
+
+  .details-description-section {
+    background-color: var(--secondary);
+    color: var(--main);
+    justify-self: flex-start;
+    padding: 8px 0;
+    width: 60%;
+  }
+
+  .details-description-section h2 {
+    margin: 4px 6px 8px;
+    text-shadow: 2px 2px 3px var(--tertiary);
+  }
+
+  .details-description-section p {
+    padding: 8px;
+    text-align: justify;
+  }
+
+  .details-video-section {
+    align-items: center;
+    background-color: var(--secondary);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-bottom: 12px;
+    width: 40%;
+  }
+
+  .details-video-section h2 {
+    color: var(--main);
+    margin: 8px 6px 60px;
+    text-shadow: 2px 2px 3px var(--tertiary);
+  }
+
+  .recomendation-section {
+    align-items: center;
+    background-color: var(--secondary);
+    display: flex;
+    height: fit-content;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .recomendation-h2 {
+    background-color: var(--secondary);
+    color: var(--main);
+    padding: 12px;
+    text-align: center;
+    text-shadow: 2px 2px 3px var(--tertiary);
+    width: 100%;
+  }
+
+  .checkbox {
+    margin: 0 8px 0 0;
+  }
+
+  .teste {
+    background-color: var(--secondary);
+    color: var(--secondary);
+    height: 50px;
+    width: 100%;
+  }
+
+  .start-section {
+    align-items: center;
+    background-color: var(--secondary);
+    bottom: 40px;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 99%;
+    z-index: 2;
+  }
+
+  .start-btn {
+    background-color: var(--main);
+    border: 4px outset var(--tertiary);
+    bottom: 0;
+    font-size: 20px;
+    font-weight: 800;
+    margin: 0 1px;
+    padding: 8px;
+    position: fixed;
+    transition: 1s ease;
+    width: 98%;
+  }
+
+  .start-btn:disabled {
+    visibility: hidden;
   }
 }
