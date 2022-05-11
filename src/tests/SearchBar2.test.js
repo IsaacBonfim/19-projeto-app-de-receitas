@@ -14,11 +14,6 @@ const SEARCHINPUT = 'search-input';
 const MSG = 'Sorry, we haven\'t found any recipes for these filters.';
 
 describe('Continua os testes na searchBar', () => {
-  afterEach(() => {
-    const number = 1000;
-    jest.setTimeout(number);
-  });
-
   it('Testa mensagem de alerta digitando xablau, na pagina de drinks', async () => {
     jest.spyOn(global, 'fetch').mockResolvedValue({
       json: jest.fn().mockResolvedValue(emptyDrinks)

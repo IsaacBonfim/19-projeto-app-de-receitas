@@ -9,7 +9,6 @@ function ExploreDrink() {
   const surpriseClick = async () => {
     const fetchApi = await fetch('https://www.thecocktaildb.com/api/json/v1/1/random.php');
     const response = await fetchApi.json();
-    console.log(response.drinks[0]);
     const surpriseDrink = response.drinks[0];
     history.push(`/drinks/${surpriseDrink.idDrink}`);
   };

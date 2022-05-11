@@ -34,7 +34,6 @@ function FoodProgress() {
         }
       }
 
-      console.log(recipe);
       setDetails(recipe);
       setIngredientList(ingredients);
     };
