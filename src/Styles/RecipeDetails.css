@@ -19,13 +19,8 @@
     font-family: Oleo Script Swash Caps , cursive;
     font-size: 40px;
     padding: 0 6px;
-<<<<<<< HEAD
     text-shadow: 0 0 1px var(--main) , 0 1px 2px var(--tertiary) , 0 2px
       2px var(--tertiary) , 0 3px 5px var(--tertiary) , 0 4px 5px var(--tertiary);
-=======
-    text-shadow: 0 0 1px var(--main) , 0 1px 2px var(--tertiary) , 0 2px 2px
-      var(--tertiary) , 0 3px 5px var(--tertiary) , 0 4px 5px var(--tertiary);
->>>>>>> 20073caa677aee14c9731ce295c00c6663defb2f
     width: 50%;
   }
 
@@ -160,13 +155,8 @@
 
   .datails-img {
     border-radius: 12px;
-<<<<<<< HEAD
     box-shadow: 0 0 2px 3px var(--secondary) , 0 0 5px 3px var(--tertiary) , 0 0
       5px 3px var(--tertiary) , 0 0 5px 3px var(--tertiary) , 0 0 5px 3px var(--tertiary);
-=======
-    box-shadow: 0 0 2px 3px var(--secondary) , 0 0 5px 3px var(--tertiary) , 0 0 5px 3px
-      var(--tertiary) , 0 0 5px 3px var(--tertiary) , 0 0 5px 3px var(--tertiary);
->>>>>>> 20073caa677aee14c9731ce295c00c6663defb2f
     height: 400px;
     margin: 12px;
     width: 43%;
@@ -187,13 +177,8 @@
     font-family: Oleo Script Swash Caps , cursive;
     font-size: 60px;
     padding: 0 6px;
-<<<<<<< HEAD
     text-shadow: 0 0 1px var(--main) , 0 1px 2px var(--tertiary) , 0 2px
       2px var(--tertiary) , 0 3px 5px var(--tertiary) , 0 4px 5px var(--tertiary);
-=======
-    text-shadow: 0 0 1px var(--main) , 0 1px 2px var(--tertiary) , 0 2px 2px
-      var(--tertiary) , 0 3px 5px var(--tertiary) , 0 4px 5px var(--tertiary);
->>>>>>> 20073caa677aee14c9731ce295c00c6663defb2f
     width: 50%;
   }
 

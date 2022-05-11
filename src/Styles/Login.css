@@ -3,11 +3,6 @@
   .login-title {
     align-items: center;
     animation: login 3.5s ease 1;
-<<<<<<< HEAD
-=======
-
-    /* animation-delay: 2s; */
->>>>>>> 20073caa677aee14c9731ce295c00c6663defb2f
     background-color: transparent;
     color: var(--main);
     display: flex;
@@ -144,15 +139,9 @@
     background-color: var(--main);
     border: 4px outset var(--secondary);
     border-radius: 16px;
-<<<<<<< HEAD
     box-shadow: 0 0 2px 1px var(--secondary) , 0 0 2px 1px var(--secondary) , 0 0
       2px 1px var(--secondary) , 0 0 4px 4px var(--tertiary) , 0 0 5px
       5px var(--tertiary) , 0 0 6px 6px var(--tertiary);
-=======
-    box-shadow: 0 0 2px 1px var(--secondary) , 0 0 2px 1px var(--secondary) , 0 0 2px
-      1px var(--secondary) , 0 0 4px 4px var(--tertiary) , 0 0
-      5px 5px var(--tertiary) , 0 0 6px 6px var(--tertiary);
->>>>>>> 20073caa677aee14c9731ce295c00c6663defb2f
     display: flex;
     flex-direction: column;
     height: 30vh;
