@@ -29,21 +29,14 @@
   50% {
     color: var(--tertiary);
     font-size: 55px;
-    text-shadow: 
-      3px 3px 2px var(--main),
-      4px 4px 2px var(--tertiary),
-      5px 5px 3px var(--secondary),
-      6px 6px 3px var(--tertiary),
-      7px 7px 4px var(--secondary);
+    text-shadow: 3px 3px 2px var(--main) , 4px 4px 2px var(--tertiary) , 5px 5px
+      3px var(--secondary) , 6px 6px 3px var(--tertiary) , 7px 7px 4px var(--secondary);
   }
 
   100% {
     color: var(--main);
     font-size: 50px;
-    text-shadow: 
-      1px 1px 2px var(--tertiary),
-      2px 2px 2px var(--secondary),
-      3px 3px 3px var(--tertiary),
-      4px 4px 3px var(--secondary);
+    text-shadow: 1px 1px 2px var(--tertiary) , 2px 2px 2px var(--secondary) , 3px
+      3px 3px var(--tertiary) , 4px 4px 3px var(--secondary);
   }
 }

@@ -3,7 +3,6 @@
   .login-title {
     align-items: center;
     animation: login 3.5s ease 1;
-    /* animation-delay: 2s; */
     background-color: transparent;
     color: var(--main);
     display: flex;
@@ -109,7 +108,6 @@
   .login-title {
     align-items: center;
     animation: login 3.5s ease 1;
-    animation-delay: 2s;
     background-color: transparent;
     color: var(--main);
     display: flex;
@@ -118,9 +116,7 @@
     height: 70px;
     justify-content: center;
     position: absolute;
-    text-shadow:
-      3px 3px 6px var(--tertiary),
-      3px 3px 6px var(--tertiary);
+    text-shadow: 3px 3px 6px var(--tertiary) , 3px 3px 6px var(--tertiary);
     top: 120px;
     width: 450px;
   }
@@ -143,13 +139,9 @@
     background-color: var(--main);
     border: 4px outset var(--secondary);
     border-radius: 16px;
-    box-shadow:
-      0 0 2px 1px var(--secondary),
-      0 0 2px 1px var(--secondary),
-      0 0 2px 1px var(--secondary),
-      0 0 4px 4px var(--tertiary),
-      0 0 5px 5px var(--tertiary),
-      0 0 6px 6px var(--tertiary);
+    box-shadow: 0 0 2px 1px var(--secondary) , 0 0 2px 1px var(--secondary) , 0 0
+      2px 1px var(--secondary) , 0 0 4px 4px var(--tertiary) , 0 0 5px
+      5px var(--tertiary) , 0 0 6px 6px var(--tertiary);
     display: flex;
     flex-direction: column;
     height: 30vh;
