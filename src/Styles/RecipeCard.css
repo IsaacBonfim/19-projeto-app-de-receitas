@@ -124,8 +124,13 @@
 
   .recipe-card:hover {
     background-color: var(--main);
+<<<<<<< HEAD
     box-shadow: 0 0 4px 3px var(--tertiary) , 0 0 4px 3px var(--tertiary) , 0 0
       4px 3px var(--tertiary);
+=======
+    box-shadow: 0 0 4px 3px var(--tertiary) , 0 0 4px 3px
+      var(--tertiary) , 0 0 4px 3px var(--tertiary);
+>>>>>>> 20073caa677aee14c9731ce295c00c6663defb2f
     color: black;
     font-family: Oleo Script Swash Caps , cursive;
     font-size: 33px;

@@ -29,8 +29,13 @@
   50% {
     color: var(--tertiary);
     font-size: 55px;
+<<<<<<< HEAD
     text-shadow: 3px 3px 2px var(--main) , 4px 4px 2px var(--tertiary) , 5px 5px
       3px var(--secondary) , 6px 6px 3px var(--tertiary) , 7px 7px 4px var(--secondary);
+=======
+    text-shadow: 3px 3px 2px var(--main) , 4px 4px 2px var(--tertiary) , 5px 5px 3px
+      var(--secondary) , 6px 6px 3px var(--tertiary) , 7px 7px 4px var(--secondary);
+>>>>>>> 20073caa677aee14c9731ce295c00c6663defb2f
   }
 
   100% {
