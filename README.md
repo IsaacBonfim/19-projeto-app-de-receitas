@@ -1,5 +1,3 @@
-Allan Eric Jepsen, Felipe Nunes, Isaac Oliveira, Isabela Gomes Machado e Ligia Azevedo Constantino
-
 # Projeto App de Receitas
 
 
