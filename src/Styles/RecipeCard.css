@@ -1,13 +1,13 @@
 @media screen and ( max-width : 768px ) {
 
   .main-section {
-    bottom: 70px;
+    bottom: 11vh;
     display: flex;
     flex-flow: row wrap;
     overflow: scroll;
     position: absolute;
     text-align: center;
-    top: 150px;
+    top: 24vh;
   }
 
   .div-card-container {
